@@ -1,0 +1,219 @@
+@function pow($number, $exponent) {
+  $value: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  } @else if $exponent < 0 {
+    @for $i from 1 through -$exponent {
+      $value: $value / $number;
+    }
+  }
+
+  @return $value;
+}
+
+:root {
+  --ag-grid-height: 77vh;
+}
+
+$phi: 1.61803398874989;
+$phi0: pow($phi, -3);
+$phi1: pow($phi, -2);
+$phi2: pow($phi, -1);
+$phi0: pow($phi, 0);
+$phi1: pow($phi, 1);
+$phi2: pow($phi, 2);
+$website-background-color: white;
+
+// MDC Variables
+// https://material.io/develop/web/docs/theming/
+// https://material.io/develop/web/components/theme/
+// https://material.io/develop/web/components/typography/
+$mdc-theme-primary: #6200ea;
+$mdc-theme-secondary: #6200ea;
+$mdc-theme-on-primary: black;
+$mdc-theme-on-secondary: red;
+$mdc-typography-font-family: 'Exo 2', sans-serif;
+
+// Ag-Grid builtin Variables
+// https://www.ag-grid.com/javascript-grid-styling/
+// https://github.com/ag-grid/ag-grid/tree/master/packages/ag-grid/src/styles
+$font-size: 16px;
+$font-family: 'Exo 2' !important;
+$icons-path: 'src/node_modules/ag-grid/src/styles/balham-icons/';
+
+@import 'src/node_modules/sass-easing/_easings.scss';
+
+@import 'src/node_modules/ag-grid/src/styles/ag-grid.scss';
+@import 'src/node_modules/ag-grid/src/styles/ag-theme-balham.scss';
+
+@import 'src/node_modules/@material/typography/mdc-typography.scss';
+@import 'src/node_modules/@material/top-app-bar/mdc-top-app-bar.scss';
+@import 'src/node_modules/@material/tabs/mdc-tabs.scss';
+@import 'src/node_modules/@material/form-field/mdc-form-field.scss';
+@import 'src/node_modules/@material/checkbox/mdc-checkbox.scss';
+@import 'src/node_modules/@material/textfield/mdc-text-field.scss';
+@import 'src/node_modules/@material/switch/mdc-switch.scss';
+@import 'src/node_modules/@material/slider/mdc-slider.scss';
+
+@mixin rightAlignColumnHeaders($col-ids...) {
+  $col-id-arr: $col-ids;
+  @each $col-id in $col-id-arr {
+    .ag-header-cell[col-id='#{$col-id}'] > .ag-cell-label-container {
+      display: flex;
+      flex-direction: row;
+    }
+    .ag-header-cell[col-id='#{$col-id}'] > .ag-cell-label-container > .ag-header-cell-label {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+@include mdc-checkbox-ink-color(white);
+
+@include rightAlignColumnHeaders(
+  '#',
+  'Market Cap',
+  'Market Share',
+  'Price',
+  'Volume 24h',
+  '1h',
+  '24h',
+  '7d',
+  'Circulating',
+  'Supply',
+  'Max Supply',
+  'Growth @1% Market Share'
+);
+
+// @include mdc-tab-bar-indicator-ink-color(red);
+
+.mdc-top-app-bar {
+  @include mdc-top-app-bar-fill-color($website-background-color);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// Selects all MDC Components
+*[class|='mdc'] {
+  font-family: 'Exo 2', sans-serif !important;
+}
+// Get rid of focus outline
+div[tabindex='-1']:focus {
+  outline: 0;
+}
+
+// Fix Ag-Grid getting overlapped
+.mdc-top-app-bar {
+  position: initial !important;
+}
+
+.mdc-tab-bar {
+  margin-left: 12vw;
+  // box-shadow: 0px 10px 31px 0px rgba(0, 0, 0, 0.2);
+}
+
+.mdc-tab {
+  font-size: 16px;
+  font-weight: 300;
+  text-decoration-color: black;
+  color: black;
+}
+
+.mdc-tab--active {
+  text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
+  transition: 0.314s ease-in;
+}
+
+.mdc-tab:hover:not(.mdc-tab--active) {
+  text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
+  transition: 0.314s;
+}
+
+.mdc-icon-button {
+  background: inherit;
+  border: none;
+  outline: none;
+}
+
+.ag-grid {
+  height: var(--ag-grid-height);
+  width: auto;
+  padding: $font-size * $phi2;
+  padding-top: $font-size * $phi1;
+  transition: 0.5s all $easeInOutQuart;
+}
+
+// .ag-cell-range-selected {
+//   background-color: white !important;
+// }
+
+.fullscreen {
+  height: 86.5vh;
+  padding: 0;
+}
+
+.ag-grid .ag-header {
+  font-size: $font-size !important;
+}
+
+.ag-header-group-cell-label {
+  justify-content: center;
+  font-size: $font-size * $phi0;
+}
+
+.ag-header-cell[col-id='Global'] {
+  color: $mdc-theme-primary;
+}
+
+.ag-root-wrapper {
+  font-weight: 100;
+  border: solid rgb(230, 230, 230) 1px;
+  box-shadow: 0px 16px 64px 0px rgba(0, 0, 0, 0.32);
+  padding: 12px;
+  // opacity: 0;
+}
+
+.ag-root-wrapper-body {
+  opacity: 0;
+}
+
+.grid-ready {
+  opacity: 1;
+  transition: 0.08s ease-out;
+}
+
+// BACKBURNER
+
+// .ag-cell {
+//   user-select: text;
+// }
+
+// .ag-cell-focus {
+//   border: none !important;
+// }
+
+// .mdc-ripple-upgraded--foreground-activation {
+//   text-shadow: 0 0 8px black !important;
+//   transition: all 0.161s;
+// }
+
+// .mdc-tab:hover::before {
+//   opacity: 0;
+//   // transition: opacity 0.314s;
+// }
+
+// .mdc-top-app-bar .mdc-top-app-bar__action-item:hover::before,
+// .mdc-top-app-bar .mdc-top-app-bar__navigation-icon:hover::before {
+//   transition: opacity 0.161s;
+// }
+// .mdc-top-app-bar .mdc-top-app-bar__action-item::before,
+// .mdc-top-app-bar .mdc-top-app-bar__navigation-icon::before {
+//   transition: opacity 0.161s;
+// }

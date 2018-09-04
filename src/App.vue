@@ -1,29 +1,73 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div>
+    <mdc-button
+      :disabled="buttonDisabled"
+      @click="onClick">click me
+    </mdc-button>
+    <ag-grid-vue
+      :column-defs="columnDefs"
+      :row-data="rowData"
+      style="width: 500px; height: 500px;"
+      class="ag-theme-balham"
+    />
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+$icons-path: '~ag-grid/src/styles/balham-icons/';
+@import '~ag-grid/src/styles/ag-grid';
+@import '~ag-grid/src/styles/ag-theme-balham';
+@import '~@material/button/mdc-button'
 </style>
+
+<script>
+import { AgGridVue } from 'ag-grid-vue'
+import 'ag-grid-enterprise'
+
+export default {
+  name: 'App',
+  components: {
+    AgGridVue,
+  },
+  data() {
+    return {
+      columnDefs: null,
+      rowData: null,
+    }
+  },
+  beforeMount() {
+    this.columnDefs = [
+      {
+        headerName: 'Make',
+        field: 'make',
+      },
+      {
+        headerName: 'Model',
+        field: 'model',
+      },
+      {
+        headerName: 'Price',
+        field: 'price',
+      },
+    ]
+
+    this.rowData = [
+      {
+        make: 'Toyota',
+        model: 'Celica',
+        price: 35000,
+      },
+      {
+        make: 'Ford',
+        model: 'Mondeo',
+        price: 32000,
+      },
+      {
+        make: 'Porsche',
+        model: 'Boxter',
+        price: 72000,
+      },
+    ]
+  },
+}
+</script>
