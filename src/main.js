@@ -1,14 +1,15 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
 import './registerServiceWorker'
-import VueMDCAdapter from 'vue-mdc-adapter'
+import router from './router'
+import store from './store'
+import App from './App.vue'
+import VueMDCTextField from 'vue-mdc-adapter/textfield' // mixin is broken, so we need to globally load it
+Vue.use(VueMDCTextField)
 
 Vue.config.productionTip = false
 
-Vue.use(VueMDCAdapter)
-
 new Vue({
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')

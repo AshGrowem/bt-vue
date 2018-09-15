@@ -1,0 +1,18 @@
+$website-background-color: white;
+
+// MDC Variables
+// https://material.io/develop/web/docs/theming/
+// https://material.io/develop/web/components/theme/
+// https://material.io/develop/web/components/typography/
+$mdc-theme-primary: #6200ea;
+$mdc-theme-secondary: #6200ea;
+$mdc-theme-on-primary: black;
+$mdc-theme-on-secondary: red;
+$mdc-typography-font-family: "Exo 2", sans-serif;
+
+@import "~@material/typography/mdc-typography";
+
+// Selects all MDC Components
+*[class|='mdc'] {
+  font-family: 'Exo 2', sans-serif !important;
+}

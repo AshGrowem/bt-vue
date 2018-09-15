@@ -1,7 +1,8 @@
-{
+const webpack_output = {
   mode: 'development',
   context: '/code/bt-vue',
-  devtool: 'cheap-module-eval-source-map',
+  devtool: '',
+  stats: 'verbose',
   node: {
     setImmediate: false,
     process: 'mock',
@@ -14,13 +15,16 @@
   output: {
     path: '/code/bt-vue/dist',
     filename: '[name].js',
-    publicPath: '/'
+    publicPath: '/',
+    globalObject: 'this'
   },
   resolve: {
-    symlinks: false,
     alias: {
       '@': '/code/bt-vue/src',
-      vue$: 'vue/dist/vue.runtime.esm.js'
+      vue$: 'vue/dist/vue.runtime.esm.js',
+      'vue-mdc-adapter': 'vue-mdc-adapter/dist',
+      'material-components-vue': 'material-components-vue/dist',
+      '~': '/code/bt-vue/node_modules/'
     },
     extensions: [
       '.js',
@@ -41,6 +45,10 @@
       '/code/bt-vue/node_modules/@vue/cli-service/node_modules'
     ]
   },
+  devServer: {
+    stats: 'verbose',
+    clientLogLevel: 'error'
+  },
   module: {
     noParse: /^(vue|vue-router|vuex|vuex-router-sync)$/,
     rules: [
@@ -53,7 +61,7 @@
             loader: 'cache-loader',
             options: {
               cacheDirectory: '/code/bt-vue/node_modules/.cache/vue-loader',
-              cacheIdentifier: '45c538d3'
+              cacheIdentifier: '4bea62c7'
             }
           },
           /* config.module.rule('vue').use('vue-loader') */
@@ -64,7 +72,7 @@
                 preserveWhitespace: false
               },
               cacheDirectory: '/code/bt-vue/node_modules/.cache/vue-loader',
-              cacheIdentifier: '45c538d3'
+              cacheIdentifier: '4bea62c7'
             }
           }
         ]
@@ -439,7 +447,22 @@
                   sourceMap: false,
                   includePaths: [
                     'node_modules'
-                  ]
+                  ],
+                  implementation: {
+                    render: function () { /* omitted long function */ },
+                    renderSync: function () { /* omitted long function */ },
+                    info: 'node-sass\t4.9.3\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
+                    types: {
+                      Number: function SassNumber() { ['native code'] },
+                      String: function SassString() { ['native code'] },
+                      Color: function SassColor() { ['native code'] },
+                      Boolean: function SassBoolean() { ['native code'] },
+                      List: function SassList() { ['native code'] },
+                      Map: function SassMap() { ['native code'] },
+                      Null: function SassNull() { ['native code'] },
+                      Error: function SassError() { ['native code'] }
+                    }
+                  }
                 }
               }
             ]
@@ -478,7 +501,22 @@
                   sourceMap: false,
                   includePaths: [
                     'node_modules'
-                  ]
+                  ],
+                  implementation: {
+                    render: function () { /* omitted long function */ },
+                    renderSync: function () { /* omitted long function */ },
+                    info: 'node-sass\t4.9.3\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
+                    types: {
+                      Number: function SassNumber() { ['native code'] },
+                      String: function SassString() { ['native code'] },
+                      Color: function SassColor() { ['native code'] },
+                      Boolean: function SassBoolean() { ['native code'] },
+                      List: function SassList() { ['native code'] },
+                      Map: function SassMap() { ['native code'] },
+                      Null: function SassNull() { ['native code'] },
+                      Error: function SassError() { ['native code'] }
+                    }
+                  }
                 }
               }
             ]
@@ -519,7 +557,22 @@
                   sourceMap: false,
                   includePaths: [
                     'node_modules'
-                  ]
+                  ],
+                  implementation: {
+                    render: function () { /* omitted long function */ },
+                    renderSync: function () { /* omitted long function */ },
+                    info: 'node-sass\t4.9.3\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
+                    types: {
+                      Number: function SassNumber() { ['native code'] },
+                      String: function SassString() { ['native code'] },
+                      Color: function SassColor() { ['native code'] },
+                      Boolean: function SassBoolean() { ['native code'] },
+                      List: function SassList() { ['native code'] },
+                      Map: function SassMap() { ['native code'] },
+                      Null: function SassNull() { ['native code'] },
+                      Error: function SassError() { ['native code'] }
+                    }
+                  }
                 }
               }
             ]
@@ -557,7 +610,22 @@
                   sourceMap: false,
                   includePaths: [
                     'node_modules'
-                  ]
+                  ],
+                  implementation: {
+                    render: function () { /* omitted long function */ },
+                    renderSync: function () { /* omitted long function */ },
+                    info: 'node-sass\t4.9.3\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
+                    types: {
+                      Number: function SassNumber() { ['native code'] },
+                      String: function SassString() { ['native code'] },
+                      Color: function SassColor() { ['native code'] },
+                      Boolean: function SassBoolean() { ['native code'] },
+                      List: function SassList() { ['native code'] },
+                      Map: function SassMap() { ['native code'] },
+                      Null: function SassNull() { ['native code'] },
+                      Error: function SassError() { ['native code'] }
+                    }
+                  }
                 }
               }
             ]
@@ -605,7 +673,22 @@
                   indentedSyntax: true,
                   includePaths: [
                     'node_modules'
-                  ]
+                  ],
+                  implementation: {
+                    render: function () { /* omitted long function */ },
+                    renderSync: function () { /* omitted long function */ },
+                    info: 'node-sass\t4.9.3\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
+                    types: {
+                      Number: function SassNumber() { ['native code'] },
+                      String: function SassString() { ['native code'] },
+                      Color: function SassColor() { ['native code'] },
+                      Boolean: function SassBoolean() { ['native code'] },
+                      List: function SassList() { ['native code'] },
+                      Map: function SassMap() { ['native code'] },
+                      Null: function SassNull() { ['native code'] },
+                      Error: function SassError() { ['native code'] }
+                    }
+                  }
                 }
               }
             ]
@@ -645,7 +728,22 @@
                   indentedSyntax: true,
                   includePaths: [
                     'node_modules'
-                  ]
+                  ],
+                  implementation: {
+                    render: function () { /* omitted long function */ },
+                    renderSync: function () { /* omitted long function */ },
+                    info: 'node-sass\t4.9.3\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
+                    types: {
+                      Number: function SassNumber() { ['native code'] },
+                      String: function SassString() { ['native code'] },
+                      Color: function SassColor() { ['native code'] },
+                      Boolean: function SassBoolean() { ['native code'] },
+                      List: function SassList() { ['native code'] },
+                      Map: function SassMap() { ['native code'] },
+                      Null: function SassNull() { ['native code'] },
+                      Error: function SassError() { ['native code'] }
+                    }
+                  }
                 }
               }
             ]
@@ -687,7 +785,22 @@
                   indentedSyntax: true,
                   includePaths: [
                     'node_modules'
-                  ]
+                  ],
+                  implementation: {
+                    render: function () { /* omitted long function */ },
+                    renderSync: function () { /* omitted long function */ },
+                    info: 'node-sass\t4.9.3\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
+                    types: {
+                      Number: function SassNumber() { ['native code'] },
+                      String: function SassString() { ['native code'] },
+                      Color: function SassColor() { ['native code'] },
+                      Boolean: function SassBoolean() { ['native code'] },
+                      List: function SassList() { ['native code'] },
+                      Map: function SassMap() { ['native code'] },
+                      Null: function SassNull() { ['native code'] },
+                      Error: function SassError() { ['native code'] }
+                    }
+                  }
                 }
               }
             ]
@@ -726,7 +839,22 @@
                   indentedSyntax: true,
                   includePaths: [
                     'node_modules'
-                  ]
+                  ],
+                  implementation: {
+                    render: function () { /* omitted long function */ },
+                    renderSync: function () { /* omitted long function */ },
+                    info: 'node-sass\t4.9.3\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
+                    types: {
+                      Number: function SassNumber() { ['native code'] },
+                      String: function SassString() { ['native code'] },
+                      Color: function SassColor() { ['native code'] },
+                      Boolean: function SassBoolean() { ['native code'] },
+                      List: function SassList() { ['native code'] },
+                      Map: function SassMap() { ['native code'] },
+                      Null: function SassNull() { ['native code'] },
+                      Error: function SassError() { ['native code'] }
+                    }
+                  }
                 }
               }
             ]
@@ -1055,7 +1183,7 @@
             loader: 'cache-loader',
             options: {
               cacheDirectory: '/code/bt-vue/node_modules/.cache/babel-loader',
-              cacheIdentifier: '272551f2'
+              cacheIdentifier: '667a3147'
             }
           },
           /* config.module.rule('js').use('babel-loader') */
@@ -1134,12 +1262,21 @@
         {
           from: '/code/bt-vue/public',
           to: '/code/bt-vue/dist',
+          toType: 'dir',
           ignore: [
             'index.html',
             '.DS_Store'
           ]
         }
       ]
+    ),
+    /* config.plugin('clean-terminal-webpack-plugin') */
+    new (require('/code/bt-vue/node_modules/clean-terminal-webpack-plugin/index.js'))(),
+    /* config.plugin('webpack-build-notifier') */
+    new (require('/code/bt-vue/node_modules/webpack-build-notifier/index.js'))(
+      {
+        sound: 'Submarine'
+      }
     )
   ],
   entry: {

@@ -1,94 +1,52 @@
-// * ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
-  <div class="App">
-    <mdc-top-app-bar/>
-    <ag-grid-vue
-      :column-defs="columnDefs"
-      :row-data="rowData"
-      :default-col-def="defaultColDef"
-      :grid-ready="onGridReady"
-      :column-resized="onColumnResized"
-      row-height="rowHeight"
-      enable-sorting="true"
-      animate-rows="true"
-      auto-size-padding="22"
-      enable-col-resize="true"
-      enable-filter="true"
-      enable-range-selection="true"
-      style="width: 500px; height: 500px;"
-      class="ag-grid ag-theme-balham"
-      row-selection="multiple"
-      suppress-cell-selection="true"
-      suppress-row-click-selection="true"
+  <main class="App"> 
+    <!-- 49 = digit1, 50 = digit2 -->
+    <GlobalEvents
+      :filter="event => event.target.tagName !== 'INPUT' && 'TEXTAREA'"
+      @keydown.49="changeActiveTab(1)"
+      @keydown.50="test"
     />
-  </div>
+    <TheHeader :active-tab="activeTab"/>
+    <AgGridTracker :row-data="rowData"/>
+  </main>
 </template>
-// * ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-import { AgGridVue } from 'ag-grid-vue'
-import 'ag-grid-enterprise'
+import GlobalEvents from 'vue-global-events'
+import AgGridTracker from './components/AgGridTracker.vue'
+import TheHeader from './components/TheHeader'
 
 export default {
   name: 'App',
   components: {
-    AgGridVue,
+    GlobalEvents,
+    AgGridTracker,
+    TheHeader,
   },
-  data() {
+  data: function() {
     return {
-      columnDefs: null,
       rowData: null,
-      test: 'test',
+      activeTab: 0,
     }
   },
-  beforeMount() {
-    this.columnDefs = [
-      {
-        headerName: 'Make',
-        field: 'make',
-      },
-      {
-        headerName: 'Model',
-        field: 'model',
-      },
-      {
-        headerName: 'Price',
-        field: 'price',
-      },
-    ]
-    this.rowData = [
-      {
-        make: 'Toyota',
-        model: 'Celica',
-        price: 35000,
-      },
-      {
-        make: 'Ford',
-        model: 'Mondeo',
-        price: 32000,
-      },
-      {
-        make: 'Porsche',
-        model: 'Boxter',
-        price: 72000,
-      },
-    ]
+  created() {
+    fetch('/rowData')
+      .then(response => response.json())
+      .then(json => (this.rowData = json))
   },
   methods: {
-    onGridReady(params) {
-      this.api = params.api
-      this.columnApi = params.columnApi
-      document.getElementsByClassName('ag-root-wrapper-body')[0].className += ' grid-ready'
-      this.api.setRowData(this.props.rowData)
-      this.columnApi.autoSizeColumns(Object.keys(this.props.rowData[0]))
+    test() {
+      alert('test')
     },
-    onColumnResized(params) {
-      document.getElementsByClassName('ag-root-wrapper-body')[0].className += ' grid-ready'
+    changeActiveTab(tabIndex) {
+      this.$set(this.activeTab, )
     },
   },
 }
 </script>
-// * ───────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <style lang="scss">
-@import 'global';
+@import 'sass/_global';
 </style>
-// * ───────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
