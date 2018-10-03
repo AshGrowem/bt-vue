@@ -3,6 +3,9 @@ module.exports = {
   env: {
     node: true,
   },
+  parserOptions: {
+    parser: 'babel-eslint',
+  },
   extends: ['plugin:vue/recommended', 'eslint:recommended'],
   rules: {
     /// Change `eslint:recommended` rules to 'warn' except `no-unexpected-multiline`
@@ -129,8 +132,5 @@ module.exports = {
     'vue/require-prop-types': 'warn',
     'vue/v-bind-style': 'warn',
     'vue/v-on-style': 'warn',
-  },
-  parserOptions: {
-    parser: 'babel-eslint',
   },
 }

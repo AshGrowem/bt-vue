@@ -1,27 +1,25 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
-  <header>
-    <mdc-top-app-bar 
-      title="Title2" 
-      event="nav"
+  <mdc-top-app-bar
+    title="Title2"
+    event="nav"
+  >
+    <mdc-tab-bar
+      slot="tabs"
     >
-      <mdc-tab-bar 
-        slot="tabs"
-      >
-        <mdc-tab :active="activeTabMap[1]">Tracker</mdc-tab>
-        <mdc-tab :active="activeTabMap[2]">HODLings</mdc-tab>
-        <mdc-tab :active="activeTabMap[3]">Rebalancer</mdc-tab>
-        <mdc-tab :active="activeTabMap[4]">Settings</mdc-tab>
-      </mdc-tab-bar>
-    </mdc-top-app-bar>
-  </header>
+      <mdc-tab :active="activeTabMap[1]">Tracker</mdc-tab>
+      <mdc-tab :active="activeTabMap[2]">HODLings</mdc-tab>
+      <mdc-tab :active="activeTabMap[3]">Rebalancer</mdc-tab>
+      <mdc-tab :active="activeTabMap[4]">Settings</mdc-tab>
+    </mdc-tab-bar>
+  </mdc-top-app-bar>
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
 import VueMDCTypography from 'vue-mdc-adapter/typography'
 import VueMDCTopAppBar from '/code/vue-mdc-adapter/components/top-app-bar' // Patches this Issue https://github.com/stasson/vue-mdc-adapter/issues/529
 import VueMDCTabs from 'vue-mdc-adapter/tabs'
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
 
 export default {
   name: 'TheHeader',
@@ -88,9 +86,9 @@ export default {
     },
   },
   methods: {
-    setActiveTab(event) {
-      // event.target
-    },
+    // setActiveTab(event) {
+    //   // event.target
+    // },
   },
 }
 </script>

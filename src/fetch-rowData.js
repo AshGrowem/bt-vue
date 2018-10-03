@@ -84,7 +84,7 @@ function buildRowDataJSON(CMKticker, CMKglobal) {
         item['Price'] = item['Price'].toFixed(2)
       }
       floatArr.forEach(item2 => { item[item2] = parseFloat(item[item2]) })
-      
+
       // FORMATTING
       // Format Final Cell Values directly in final `rowData.json` file
       // (Use in post Render Logic if possible or may break sorting)

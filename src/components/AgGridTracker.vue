@@ -1,6 +1,6 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
-  <AgGridVue 
+  <AgGridVue
     :column-defs="columnDefs"
     :grid-ready="onGridReady"
     :row-data="rowData"
@@ -23,7 +23,7 @@
 import { AgGridVue } from 'ag-grid-vue'
 import 'ag-grid-enterprise'
 import { agShared } from './agShared.js'
-import { ClientSideRowModel } from 'ag-grid-community'
+// import { ClientSideRowModel } from 'ag-grid-community'
 
 export default {
   name: 'AgGridTracker',
@@ -113,7 +113,20 @@ $icons-path: '~ag-grid-community/src/styles/balham-icons/';
   }
 }
 
-@include rightAlignColumnHeaders('#', 'Market Cap', 'Market Share', 'Price', 'Volume 24h', '1h', '24h', '7d', 'Circulating', 'Supply', 'Max Supply', 'Growth @1% Market Share');
+@include rightAlignColumnHeaders(
+  '#',
+  'Market Cap',
+  'Market Share',
+  'Price',
+  'Volume 24h',
+  '1h',
+  '24h',
+  '7d',
+  'Circulating',
+  'Supply',
+  'Max Supply',
+  'Growth @1% Market Share'
+);
 
 // Remove focus outline
 div[tabindex='-1']:focus {

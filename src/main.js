@@ -3,8 +3,10 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import App from './App.vue'
+import { Plugin } from 'vue-fragments'
 import VueMDCTextField from 'vue-mdc-adapter/textfield' // mixin is broken, so we need to globally load it
 Vue.use(VueMDCTextField)
+Vue.use(Plugin)
 
 Vue.config.keyCodes = {
   digit1: 49,
