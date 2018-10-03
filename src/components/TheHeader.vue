@@ -3,24 +3,25 @@
   <header>
     <mdc-top-app-bar 
       title="Title2" 
-      event="nav">
+      event="nav"
+    >
       <mdc-tab-bar 
-        slot="tabs" 
-        @change="onSelected">
-        <mdc-tab>Tracker</mdc-tab>
-        <mdc-tab>HODLings</mdc-tab>
-        <mdc-tab>Rebalancer</mdc-tab>
-        <mdc-tab>Settings</mdc-tab>
+        slot="tabs"
+      >
+        <mdc-tab :active="activeTabMap[1]">Tracker</mdc-tab>
+        <mdc-tab :active="activeTabMap[2]">HODLings</mdc-tab>
+        <mdc-tab :active="activeTabMap[3]">Rebalancer</mdc-tab>
+        <mdc-tab :active="activeTabMap[4]">Settings</mdc-tab>
       </mdc-tab-bar>
     </mdc-top-app-bar>
   </header>
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-import Vue from 'vue'
 import VueMDCTypography from 'vue-mdc-adapter/typography'
 import VueMDCTopAppBar from '/code/vue-mdc-adapter/components/top-app-bar' // Patches this Issue https://github.com/stasson/vue-mdc-adapter/issues/529
 import VueMDCTabs from 'vue-mdc-adapter/tabs'
+import { mapState } from 'vuex'
 
 export default {
   name: 'TheHeader',
@@ -28,24 +29,67 @@ export default {
   props: {
     activeTab: {
       type: Number,
-      default: 0,
+      default: 1,
     },
   },
-  data: function() {
+  data() {
     return {
       text: '',
+      activeTabMap: {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+      },
     }
   },
+  watch: {
+    activeTab(newTabIndex) {
+      function getActiveTabMap() {
+        switch (newTabIndex) {
+          case 1:
+            return {
+              1: true,
+              2: false,
+              3: false,
+              4: false,
+            }
+          case 2:
+            return {
+              1: false,
+              2: true,
+              3: false,
+              4: false,
+            }
+          case 3:
+            return {
+              1: false,
+              2: false,
+              3: true,
+              4: false,
+            }
+          case 4:
+            return {
+              1: false,
+              2: false,
+              3: false,
+              4: true,
+            }
+          default:
+            return {
+              1: false,
+              2: false,
+              3: false,
+              4: false,
+            }
+        }
+      }
+      this.activeTabMap = getActiveTabMap(newTabIndex)
+    },
+  },
   methods: {
-    theAction: function() {
-      alert('boop!')
-      console.info(this.theAction)
-    },
-    showHelp: function() {
-      console.log('show help')
-    },
-    onSelected: function(idx) {
-      // console.log(`selected index: ${idx}`)
+    setActiveTab(event) {
+      // event.target
     },
   },
 }

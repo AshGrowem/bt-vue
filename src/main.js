@@ -6,6 +6,12 @@ import App from './App.vue'
 import VueMDCTextField from 'vue-mdc-adapter/textfield' // mixin is broken, so we need to globally load it
 Vue.use(VueMDCTextField)
 
+Vue.config.keyCodes = {
+  digit1: 49,
+  digit2: 50,
+  digit3: 51,
+  digit4: 52,
+}
 Vue.config.productionTip = false
 
 new Vue({

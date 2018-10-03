@@ -6,6 +6,12 @@ Vue.use(Vuex)
 const state = {
   'Default Grid Tab': 'Tracker',
   activeTab: 0,
+  activeTabMap: {
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+  },
   Tracker: {
     Height: 42,
     Fullscreen: true,
@@ -44,8 +50,8 @@ const state = {
 }
 
 const mutations = {
-  ADD_NUMBER(state, payload) {
-    state.numbers.push(payload)
+  setActiveTabMap(state) {
+    console.info('boop')
   },
 }
 
@@ -56,8 +62,44 @@ const actions = {
 }
 
 const getters = {
-  getNumbers(state) {
-    return state.numbers
+  activeTabMap(newTabIndex) {
+    switch (newTabIndex) {
+      case 1:
+        return {
+          1: true,
+          2: false,
+          3: false,
+          4: false,
+        }
+      case 2:
+        return {
+          1: false,
+          2: true,
+          3: false,
+          4: false,
+        }
+      case 3:
+        return {
+          1: false,
+          2: false,
+          3: true,
+          4: false,
+        }
+      case 4:
+        return {
+          1: false,
+          2: false,
+          3: false,
+          4: true,
+        }
+      default:
+        return {
+          1: false,
+          2: false,
+          3: false,
+          4: false,
+        }
+    }
   },
 }
 

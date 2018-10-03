@@ -2,13 +2,16 @@
 <template>
   <main class="App"> 
     <!-- 49 = digit1, 50 = digit2 -->
+    <!-- test -->
     <GlobalEvents
       :filter="event => event.target.tagName !== 'INPUT' && 'TEXTAREA'"
-      @keydown.49="changeActiveTab(1)"
-      @keydown.50="test"
+      @keydown.digit1="changeActiveTab(1)"
+      @keydown.digit2="changeActiveTab(2)"
+      @keydown.digit3="changeActiveTab(3)"
+      @keydown.digit4="changeActiveTab(4)"
     />
-    <TheHeader :active-tab="activeTab"/>
-    <AgGridTracker :row-data="rowData"/>
+    <TheHeader :active-tab="activeTab" />
+    <AgGridTracker :row-data="rowData" />
   </main>
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -24,10 +27,10 @@ export default {
     AgGridTracker,
     TheHeader,
   },
-  data: function() {
+  data() {
     return {
       rowData: null,
-      activeTab: 0,
+      activeTab: 1,
     }
   },
   created() {
@@ -40,7 +43,7 @@ export default {
       alert('test')
     },
     changeActiveTab(tabIndex) {
-      this.$set(this.activeTab, )
+      this.activeTab = tabIndex
     },
   },
 }

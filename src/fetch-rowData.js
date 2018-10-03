@@ -2,7 +2,8 @@
 // region
 /*
 
-To Do
+// TODO
+  • replace `forEach` with `map`
   • .toFixed() back to numbers
   • 'max_supply' smart fill-in from CryptoCompare
   • util.promisify https://nodejs.org/dist/latest-v9.x/docs/api/util.html#util_util_promisify_original

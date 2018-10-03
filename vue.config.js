@@ -21,7 +21,7 @@ module.exports = {
       errors: true,
     },
   },
-  // SECTION - Chain
+  /// Chain
   chainWebpack: config => {
     config.when(process.env.NODE_ENV === 'development', config => config.devtool(''))
     config.stats('verbose')
@@ -38,7 +38,7 @@ module.exports = {
         sound: false,
       },
     ])
-    // SECTION - Stats
+    /// Stats
     // config.performance.hints('warning')
     // config
     //   .plugin('speed-measure-webpack-plugin')
