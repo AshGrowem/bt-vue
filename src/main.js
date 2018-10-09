@@ -5,7 +5,9 @@ import store from './store'
 import App from './App.vue'
 import { Plugin } from 'vue-fragments'
 import VueMDCTextField from 'vue-mdc-adapter/textfield' // mixin is broken, so we need to globally load it
+import VueMDCIconToggle from 'vue-mdc-adapter/icon-toggle' // mixin is broken, so we need to globally load it
 Vue.use(VueMDCTextField)
+Vue.use(VueMDCIconToggle)
 Vue.use(Plugin)
 
 Vue.config.keyCodes = {

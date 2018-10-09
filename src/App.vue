@@ -4,23 +4,28 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
   <main class="App">
-    <!-- 49 = digit1, 50 = digit2 -->
-    <!-- test -->
     <GlobalEvents
       :filter="event => event.target.tagName !== 'INPUT' && 'TEXTAREA'"
-      @keydown.digit1="changeActiveTab(1)"
-      @keydown.digit2="changeActiveTab(2)"
-      @keydown.digit3="changeActiveTab(3)"
-      @keydown.digit4="changeActiveTab(4)"
+      @keydown.digit1="activeTab = 0"
+      @keydown.digit2="activeTab = 1"
+      @keydown.digit3="activeTab = 2"
+      @keydown.digit4="activeTab = 3"
     />
-    <TheHeader :active-tab="activeTab" />
-    <AgGridTracker :row-data="rowData" />
+    <TheHeader
+      :active-tab="activeTab"
+      @changedActiveTab="activeTab = $event"
+    />
+    <component
+      :is="activeTabComponent"
+      :row-data="rowData"
+    />
   </main>
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
 import GlobalEvents from 'vue-global-events'
 import AgGridTracker from './components/AgGridTracker.vue'
+import AgGridHODLings from './components/AgGridHODLings.vue'
 import TheHeader from './components/TheHeader'
 
 export default {
@@ -28,31 +33,29 @@ export default {
   components: {
     GlobalEvents,
     AgGridTracker,
+    AgGridHODLings,
     TheHeader,
   },
   data() {
     return {
       rowData: null,
-      activeTab: 1,
+      activeTab: 0,
     }
+  },
+  computed: {
+    activeTabComponent() {
+      return ['AgGridTracker', 'AgGridHODLings', 'AgGridRebalancer', 'AgGridSettings'][this.activeTab]
+    },
   },
   created() {
     fetch('/rowData')
       .then(response => response.json())
       .then(json => (this.rowData = json))
   },
-  methods: {
-    test() {
-      alert('test')
-    },
-    changeActiveTab(tabIndex) {
-      this.activeTab = tabIndex
-    },
-  },
 }
 </script>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <style lang="scss">
-@import 'sass/_global';
+@import 'components/sass/app';
 </style>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

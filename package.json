@@ -10,7 +10,8 @@
     "backend-api": "json-server src/rowData.json --port 8081",
     "frontend": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
-    "fetch-rowData": "node src/fetch-rowData.js"
+    "fetch-rowData": "node src/fetch-rowData.js",
+    "severity": "node ./severity.js"
   },
   "dependencies": {
     "ag-grid-community": "^19.0.0",
@@ -31,13 +32,16 @@
     "@vue/cli-service": "^3.0.4",
     "clean-terminal-webpack-plugin": "^1.1.0",
     "eslint": "^5.6.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-vue": "git+https://github.com/vuejs/eslint-plugin-vue.git",
+    "github-files-fetcher": "^1.3.0",
     "json-server": "^0.14.0",
     "node-sass": "^4.9.3",
     "nodemon": "^1.18.4",
     "npm-run-all": "^4.1.3",
-    "sass": "^1.14.1",
     "sass-loader": "^7.1.0",
+    "shelljs": "^0.8.2",
     "speed-measure-webpack-plugin": "^1.2.3",
     "vue-template-compiler": "^2.5.17",
     "webpack-build-notifier": "^0.1.30"

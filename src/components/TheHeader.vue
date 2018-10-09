@@ -1,128 +1,99 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
   <mdc-top-app-bar
-    title="Title2"
+    title="BitTracker"
     event="nav"
   >
-    <mdc-tab-bar
-      slot="tabs"
-    >
-      <mdc-tab :active="activeTabMap[1]">Tracker</mdc-tab>
-      <mdc-tab :active="activeTabMap[2]">HODLings</mdc-tab>
-      <mdc-tab :active="activeTabMap[3]">Rebalancer</mdc-tab>
-      <mdc-tab :active="activeTabMap[4]">Settings</mdc-tab>
+    <mdc-tab-bar @change="$emit('changedActiveTab', $event)">
+      <mdc-tab :active="activeTabs[0]">TRACKER</mdc-tab>
+      <mdc-tab :active="activeTabs[1]">HODLings</mdc-tab>
+      <mdc-tab :active="activeTabs[2]">REBALANCER</mdc-tab>
+      <mdc-tab :active="activeTabs[3]">SETTINGS</mdc-tab>
     </mdc-tab-bar>
+    <mdc-switch
+      label="Compact"
+    />
+    <mdc-icon-toggle
+      toggle-on="fullscreen"
+      toggle-off="fullscreen_exit"
+    />
   </mdc-top-app-bar>
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
 import VueMDCTypography from 'vue-mdc-adapter/typography'
+import VueMDCSwitch from 'vue-mdc-adapter/switch'
 import VueMDCTopAppBar from '/code/vue-mdc-adapter/components/top-app-bar' // Patches this Issue https://github.com/stasson/vue-mdc-adapter/issues/529
 import VueMDCTabs from 'vue-mdc-adapter/tabs'
 // import { mapState } from 'vuex'
 
+this
+
 export default {
   name: 'TheHeader',
-  mixins: [VueMDCTypography, VueMDCTopAppBar, VueMDCTabs],
+  mixins: [VueMDCTypography, VueMDCTopAppBar, VueMDCTabs, VueMDCSwitch],
   props: {
     activeTab: {
       type: Number,
-      default: 1,
+      default: 0,
     },
   },
   data() {
     return {
       text: '',
-      activeTabMap: {
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-      },
     }
   },
-  watch: {
-    activeTab(newTabIndex) {
-      function getActiveTabMap() {
-        switch (newTabIndex) {
-          case 1:
-            return {
-              1: true,
-              2: false,
-              3: false,
-              4: false,
-            }
-          case 2:
-            return {
-              1: false,
-              2: true,
-              3: false,
-              4: false,
-            }
-          case 3:
-            return {
-              1: false,
-              2: false,
-              3: true,
-              4: false,
-            }
-          case 4:
-            return {
-              1: false,
-              2: false,
-              3: false,
-              4: true,
-            }
-          default:
-            return {
-              1: false,
-              2: false,
-              3: false,
-              4: false,
-            }
-        }
-      }
-      this.activeTabMap = getActiveTabMap(newTabIndex)
+  computed: {
+    activeTabs() {
+      return [
+        [true, false, false, false],
+        [false, true, false, false],
+        [false, false, true, false],
+        [false, false, false, true],
+      ][this.activeTab]
     },
-  },
-  methods: {
-    // setActiveTab(event) {
-    //   // event.target
-    // },
   },
 }
 </script>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <style lang="scss">
-// FIXME mdc-tab activeTab starts out not bolded
-
-@import '../sass/_global';
-@import '~vue-mdc-adapter/dist/styles';
+@import 'sass/app';
+@import 'sass/pow';
+@import 'sass/phi';
 @import '~@material/button/mdc-button';
 @import '~@material/top-app-bar/mdc-top-app-bar';
 @import '~@material/tabs/mdc-tabs';
-@import '~@material/icon-toggle/mdc-icon-toggle';
+// @import '~@material/icon-toggle/mdc-icon-toggle';
+@import '~@material/switch/mdc-switch';
 
 // @include mdc-checkbox-ink-color(white);
 // @include mdc-tab-bar-indicator-ink-color(red);
 
 .mdc-top-app-bar {
-  @include mdc-top-app-bar-fill-color($website-background-color);
+  @include mdc-top-app-bar-fill-color($app-background-color);
+  position: initial; // Fix Ag-Grid getting overlapped
+  font-size: phi-px(1);
+  color: black;
 }
 
-// Fix Ag-Grid getting overlapped
-.mdc-top-app-bar {
-  position: initial !important;
+// .mdc-top-app-bar__section {
+//   flex: initial;
+// }
+
+.mdc-top-app-bar__title {
+  font-size: phi-px(1);
+  font-weight: 400;
+  line-height: 48px;
 }
 
 .mdc-tab-bar {
-  margin-left: 12vw;
-
+  margin-left: 0vw;
   // box-shadow: 0px 10px 31px 0px rgba(0, 0, 0, 0.2);
 }
 
 .mdc-tab {
   font-size: 16px;
+  text-transform: initial;
   font-weight: 300;
   text-decoration-color: black;
   color: black;
@@ -130,7 +101,7 @@ export default {
 
 .mdc-tab--active {
   text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
-  transition: 0.314s ease-in;
+  transition: 0.314s;
 }
 
 .mdc-tab:hover:not(.mdc-tab--active) {
@@ -142,6 +113,11 @@ export default {
   background: inherit;
   border: none;
   outline: none;
+}
+
+.mdc-switch-label {
+  font-size: phi-px(0);
+  font-weight: 100;
 }
 </style>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

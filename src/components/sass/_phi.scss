@@ -1,0 +1,11 @@
+@import "pow";
+
+@function phi($exponent) {
+  $phi: 1.6180339887;
+
+  @return pow($phi, $exponent);
+}
+
+@function phi-px($exponent, $app-font-size: 16px) {
+  @return phi($exponent) * unquote($app-font-size);
+}
