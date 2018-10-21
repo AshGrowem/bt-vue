@@ -15,10 +15,15 @@
       :active-tab="activeTab"
       @changedActiveTab="activeTab = $event"
     />
-    <component
-      :is="activeTabComponent"
-      :row-data="rowData"
-    />
+    <transition
+      name="component-fade"
+      mode="out-in"
+    >
+      <component
+        :is="activeTabComponent"
+        :row-data="rowData"
+      />
+    </transition>
   </main>
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -26,7 +31,7 @@
 import GlobalEvents from 'vue-global-events'
 import AgGridTracker from './components/AgGridTracker.vue'
 import AgGridHODLings from './components/AgGridHODLings.vue'
-import TheHeader from './components/TheHeader'
+import TheHeader from './components/TheHeader.vue'
 
 export default {
   name: 'App',
@@ -57,5 +62,19 @@ export default {
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <style lang="scss">
 @import 'components/sass/app';
+
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.08s ease-out;
+  .ag-root-wrapper-body {
+    transition: opacity 0.08s ease-out;
+  }
+}
+.component-fade-enter,
+.component-fade-leave-to {
+  .ag-root-wrapper-body {
+    opacity: 0;
+  }
+}
 </style>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

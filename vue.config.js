@@ -1,5 +1,5 @@
-const path = '/code/bt-vue/node_modules/'
 // const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+
 // const smp = new SpeedMeasurePlugin()
 
 module.exports = {
@@ -32,8 +32,10 @@ module.exports = {
       .set('~', '/code/bt-vue/node_modules/')
     config
       .plugin('clean-terminal-webpack-plugin')
-      .use(require.resolve(`${path}clean-terminal-webpack-plugin`))
-    config.plugin('webpack-build-notifier').use(require.resolve(`${path}webpack-build-notifier`), [
+      // .use('clean-terminal-webpack-plugin')
+      .use(require.resolve('clean-terminal-webpack-plugin'))
+    // config.plugin('webpack-build-notifier').use('webpack-build-notifier', [
+    config.plugin('webpack-build-notifier').use(require.resolve('webpack-build-notifier'), [
       {
         sound: false,
       },

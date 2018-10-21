@@ -68,11 +68,11 @@ export default {
     }
   },
   methods: {
-    onGridReady(params) {
-      this.api = params.api
-      this.columnApi = params.columnApi
-      document.getElementsByClassName('ag-root-wrapper-body')[0].className += ' grid-ready'
-    },
+    // onGridReady(params) {
+    //   this.api = params.api
+    //   this.columnApi = params.columnApi
+    //   document.getElementsByClassName('ag-root-wrapper-body')[0].className += ' grid-ready'
+    // },
   },
 }
 </script>
@@ -160,12 +160,12 @@ div[tabindex='-1']:focus {
   padding: 12px;
 }
 
-.ag-root-wrapper-body {
-  opacity: 0;
-}
+// .ag-root-wrapper-body {
+//   opacity: 0;
+// }
 
-.grid-ready {
-  opacity: 1;
-  transition: 0.08s ease-out;
-}
+// .grid-ready {
+//   opacity: 1;
+//   transition: 0.08s ease-out;
+// }
 </style>
