@@ -26,7 +26,7 @@ import { agShared } from './agShared.js'
 // import { ClientSideRowModel } from 'ag-grid-community'
 
 export default {
-  name: 'AgGridTracker',
+  name: 'Tracker',
   components: {
     AgGridVue,
   },
@@ -39,6 +39,7 @@ export default {
   data() {
     return {
       defaultColDef: {
+        classes: [],
         cellStyle: {
           'text-align': 'right',
           'line-height': '36px',

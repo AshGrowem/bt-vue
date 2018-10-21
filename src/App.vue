@@ -29,16 +29,16 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
 import GlobalEvents from 'vue-global-events'
-import AgGridTracker from './components/AgGridTracker.vue'
-import AgGridHODLings from './components/AgGridHODLings.vue'
+import Tracker from './components/Tracker.vue'
+import HODLings from './components/HODLings.vue'
 import TheHeader from './components/TheHeader.vue'
 
 export default {
   name: 'App',
   components: {
     GlobalEvents,
-    AgGridTracker,
-    AgGridHODLings,
+    Tracker,
+    HODLings,
     TheHeader,
   },
   data() {
@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     activeTabComponent() {
-      return ['AgGridTracker', 'AgGridHODLings', 'AgGridRebalancer', 'AgGridSettings'][this.activeTab]
+      return ['Tracker', 'HODLings', 'Rebalancer', 'Settings'][this.activeTab]
     },
   },
   created() {
