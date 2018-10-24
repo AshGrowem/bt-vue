@@ -1,4 +1,5 @@
-export let agShared = {
+
+export const agShared = { // eslint-disable-line
   get BCP47LanguageTag() {
     return window.navigator.language || window.navigator.userLanguage
   },

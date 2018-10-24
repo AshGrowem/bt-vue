@@ -2,14 +2,12 @@ import Vue from 'vue'
 import './registerServiceWorker'
 import VueMDCIconToggle from 'vue-mdc-adapter/icon-toggle' // mixin is broken, so we need to globally load it
 import VueMDCTextField from 'vue-mdc-adapter/textfield' // mixin is broken, so we need to globally load it
-import { Plugin } from 'vue-fragments'
 import router from './router'
 import store from './store'
 import App from './App.vue'
 
 Vue.use(VueMDCTextField)
 Vue.use(VueMDCIconToggle)
-Vue.use(Plugin)
 
 Vue.config.keyCodes = {
   digit1: 49,

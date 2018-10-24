@@ -39,9 +39,7 @@ export default {
     },
   },
   data() {
-    return {
-      text: '',
-    }
+    return {}
   },
   computed: {
     activeTabs() {
@@ -57,9 +55,10 @@ export default {
 </script>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <style lang="scss">
-@import 'sass/app';
-@import 'sass/pow';
-@import 'sass/phi';
+@import '../sass/app';
+@import '../sass/pow';
+@import '../sass/phi';
+
 @import '~@material/button/mdc-button';
 @import '~@material/top-app-bar/mdc-top-app-bar';
 @import '~@material/tabs/mdc-tabs';
@@ -101,7 +100,7 @@ export default {
 
 .mdc-tab--active {
   text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
-  transition: 0.314s;
+  transition: 0.314s ease-out;
 }
 
 .mdc-tab:hover:not(.mdc-tab--active) {

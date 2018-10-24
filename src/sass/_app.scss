@@ -1,6 +1,8 @@
 $app-background-color: white;
 $app-font-family: 'Exo 2';
 $app-font-size: 16px;
+@import 'easings';
+$app-ease: 0.314s $easeInOutSine;
 
 // MDC Variables
 // https://material.io/develop/web/docs/theming/

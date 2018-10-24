@@ -1,18 +1,18 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
   <AgGridVue
+    :class="classObject"
     :column-defs="columnDefs"
+    :default-col-def="defaultColDef"
     :grid-ready="onGridReady"
     :row-data="rowData"
-    :default-col-def="defaultColDef"
-    row-height="rowHeight"
-    enable-sorting="true"
     animate-rows="true"
     auto-size-padding="22"
     enable-col-resize="true"
     enable-filter="true"
     enable-range-selection="true"
-    class="ag-grid ag-theme-balham"
+    enable-sorting="true"
+    row-height="rowHeight"
     row-selection="multiple"
     suppress-cell-selection="false"
     suppress-row-click-selection="false"
@@ -35,16 +35,24 @@ export default {
       type: Array,
       default: null,
     },
+    numericFont: {
+      type: String,
+      required: true,
+    },
+    numericFontWeight: {
+      type: Number,
+      required: true,
+    },
   },
   data() {
     return {
+      gridReady: false,
       defaultColDef: {
-        classes: [],
         cellStyle: {
           'text-align': 'right',
           'line-height': '36px',
-          'font-family': agShared.numbersFont,
-          'font-weight': agShared.numbersFontWeight,
+          'font-family': this.numericFont,
+          'font-weight': this.numericFontWeight,
         },
       },
       // prettier-ignore
@@ -68,12 +76,21 @@ export default {
       ]
     }
   },
+  computed: {
+    classObject: function() {
+      return {
+        'ag-grid': true,
+        'ag-theme-balham': true,
+        'grid-ready': this.gridReady,
+      }
+    },
+  },
   methods: {
-    // onGridReady(params) {
-    //   this.api = params.api
-    //   this.columnApi = params.columnApi
-    //   document.getElementsByClassName('ag-root-wrapper-body')[0].className += ' grid-ready'
-    // },
+    onGridReady(params) {
+      this.api = params.api
+      this.columnApi = params.columnApi
+      this.gridReady = true
+    },
   },
 }
 </script>
@@ -83,10 +100,9 @@ export default {
   --ag-grid-height: 77vh;
 }
 
-@import 'sass/app';
-@import 'sass/pow';
-@import 'sass/phi';
-@import 'sass/easings';
+@import '../../sass/app';
+@import '../../sass/pow';
+@import '../../sass/phi';
 
 @import '~ag-grid-community/src/styles/ag-grid';
 @import '~ag-grid-community/src/styles/ag-theme-balham';
@@ -161,12 +177,14 @@ div[tabindex='-1']:focus {
   padding: 12px;
 }
 
-// .ag-root-wrapper-body {
-//   opacity: 0;
-// }
+.ag-root-wrapper-body {
+  opacity: 0;
+}
 
-// .grid-ready {
-//   opacity: 1;
-//   transition: 0.08s ease-out;
-// }
+.grid-ready {
+  .ag-root-wrapper-body {
+    opacity: 1;
+    transition: opacity $app-ease;
+  }
+}
 </style>

@@ -15,22 +15,19 @@
       :active-tab="activeTab"
       @changedActiveTab="activeTab = $event"
     />
-    <transition
-      name="component-fade"
-      mode="out-in"
-    >
-      <component
-        :is="activeTabComponent"
-        :row-data="rowData"
-      />
-    </transition>
+    <component
+      :is="activeTabComponent"
+      :row-data="rowData"
+      :numeric-font-weight="numericFontWeight"
+      :numeric-font="numericFont"
+    />
   </main>
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
 import GlobalEvents from 'vue-global-events'
-import Tracker from './components/Tracker.vue'
-import HODLings from './components/HODLings.vue'
+import Tracker from './components/grids/Tracker.vue'
+import HODLings from './components/grids/HODLings.vue'
 import TheHeader from './components/TheHeader.vue'
 
 export default {
@@ -45,6 +42,8 @@ export default {
     return {
       rowData: null,
       activeTab: 0,
+      numericFont: 'Titillium Web',
+      numericFontWeight: 100,
     }
   },
   computed: {
@@ -61,20 +60,5 @@ export default {
 </script>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <style lang="scss">
-@import 'components/sass/app';
-
-.component-fade-enter-active,
-.component-fade-leave-active {
-  transition: opacity 0.08s ease-out;
-  .ag-root-wrapper-body {
-    transition: opacity 0.08s ease-out;
-  }
-}
-.component-fade-enter,
-.component-fade-leave-to {
-  .ag-root-wrapper-body {
-    opacity: 0;
-  }
-}
 </style>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
