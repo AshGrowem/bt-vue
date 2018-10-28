@@ -12,6 +12,8 @@
     enable-filter="true"
     enable-range-selection="true"
     enable-sorting="true"
+    enter-moves-down-="true"
+    enter-moves-down-after-edit="true"
     row-height="rowHeight"
     row-selection="multiple"
     suppress-cell-selection="false"
@@ -20,10 +22,8 @@
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-import { AgGridVue } from 'ag-grid-vue'
 import 'ag-grid-enterprise'
-import { agShared } from './agShared.js'
-// import { ClientSideRowModel } from 'ag-grid-community'
+import { AgGridVue } from 'ag-grid-vue'
 
 export default {
   name: 'Tracker',
@@ -31,9 +31,29 @@ export default {
     AgGridVue,
   },
   props: {
-    rowData: {
-      type: Array,
-      default: null,
+    numericFont: {
+      type: String,
+      default: 'Titillium Web',
+    },
+    numericFontWeight: {
+      type: Number,
+      default: 100,
+    },
+    lastUpdated: {
+      type: Function,
+      required: true,
+    },
+    rightAlignedCellStyle: {
+      type: Object,
+      required: true,
+    },
+    valueFormatter: {
+      type: Object,
+      required: true,
+    },
+    comparator: {
+      type: Object,
+      required: true,
     },
   },
   data() {
@@ -44,15 +64,15 @@ export default {
         cellStyle: {
           'text-align': 'right',
           'line-height': '36px',
-          'font-family': agShared.numbersFont,
-          'font-weight': agShared.numbersFontWeight,
+          'font-family': this.numericFont,
+          'font-weight': this.numericFontWeight,
         },
-      },
+      }
       // prettier-ignore
     }
   },
   computed: {
-    classObject: function() {
+    classObject() {
       return {
         'ag-grid': true,
         'ag-theme-balham': true,
@@ -62,9 +82,12 @@ export default {
   },
   methods: {
     onGridReady(params) {
-      this.api = params.api
-      this.columnApi = params.columnApi
       this.gridReady = true
+      this.gridApi = params.api
+      this.columnApi = params.columnApi
+
+      const fieldArray = Object.keys(this.rowData[0])
+      this.columnApi.autoSizeColumns(fieldArray)
     },
   },
 }
@@ -154,6 +177,7 @@ div[tabindex='-1']:focus {
 
 .ag-root-wrapper-body {
   opacity: 0;
+  transition: opacity $app-ease;
 }
 
 .grid-ready {
@@ -163,3 +187,4 @@ div[tabindex='-1']:focus {
   }
 }
 </style>
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

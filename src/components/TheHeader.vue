@@ -23,8 +23,8 @@
 <script>
 import VueMDCTypography from 'vue-mdc-adapter/typography'
 import VueMDCSwitch from 'vue-mdc-adapter/switch'
-import VueMDCTopAppBar from '/code/vue-mdc-adapter/components/top-app-bar' // Patches this Issue https://github.com/stasson/vue-mdc-adapter/issues/529
 import VueMDCTabs from 'vue-mdc-adapter/tabs'
+import VueMDCTopAppBar from '/code/bt-vue/vue-mdc-adapter/components/top-app-bar' // Patches this Issue https://github.com/stasson/vue-mdc-adapter/issues/529
 // import { mapState } from 'vuex'
 
 this

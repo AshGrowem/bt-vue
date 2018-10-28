@@ -25,6 +25,7 @@ module.exports = {
   chainWebpack: config => {
     config.when(process.env.NODE_ENV === 'development', config => config.devtool(''))
     config.stats('verbose')
+    config.devtool('eval-source-map')
     config.devServer.stats('verbose').clientLogLevel('error')
     config.resolve.alias
       .set('vue-mdc-adapter', 'vue-mdc-adapter/dist')
@@ -35,11 +36,11 @@ module.exports = {
       // .use('clean-terminal-webpack-plugin')
       .use(require.resolve('clean-terminal-webpack-plugin'))
     // config.plugin('webpack-build-notifier').use('webpack-build-notifier', [
-    config.plugin('webpack-build-notifier').use(require.resolve('webpack-build-notifier'), [
-      {
-        sound: false,
-      },
-    ])
+    // config.plugin('webpack-build-notifier').use(require.resolve('webpack-build-notifier'), [
+    //   {
+    //     sound: false,
+    //   },
+    // ])
     /// Stats
     // config.performance.hints('warning')
     // config
