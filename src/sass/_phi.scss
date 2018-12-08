@@ -7,5 +7,5 @@
 }
 
 @function phi-px($exponent, $app-font-size: 16px) {
-  @return phi($exponent) * unquote($app-font-size);
+  @return phi($exponent) * $app-font-size;
 }

@@ -15,7 +15,7 @@
       :active-tab="activeTab"
       @changedActiveTab="activeTab = $event"
     />
-    <component
+    <Component
       :is="activeTabComponent"
       :row-data="rowData"
       :numeric-font-weight="numericFontWeight"
