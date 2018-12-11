@@ -115,6 +115,7 @@ export default {
 }
 
 .mdc-switch-label {
+  font-family: 'Exo 2';
   font-size: phi-px(0);
   font-weight: 100;
 }
