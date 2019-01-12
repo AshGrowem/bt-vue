@@ -4,14 +4,10 @@
     :class="classObject"
     :column-defs="columnDefs"
     :default-col-def="defaultColDef"
-    :grid-ready="onGridReady"
     :row-data="rowData"
     animate-rows="true"
     auto-size-padding="22"
-    enable-col-resize="true"
-    enable-filter="true"
     enable-range-selection="true"
-    enable-sorting="true"
     enter-moves-down-="true"
     enter-moves-down-after-edit="true"
     row-height="rowHeight"
@@ -19,11 +15,12 @@
     suppress-cell-selection="false"
     suppress-row-click-selection="false"
     row-drag-managed="true"
+    @grid-ready="onGridReady"
   />
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-import 'ag-grid-enterprise'
+// import 'ag-grid-enterprise'
 import { AgGridVue } from 'ag-grid-vue'
 import AgGridBase from './AgGridBase.vue'
 

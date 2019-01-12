@@ -4,14 +4,10 @@
     :class="classObject"
     :column-defs="columnDefs"
     :default-col-def="defaultColDef"
-    :grid-ready="onGridReady"
     :row-data="rowData"
     animate-rows="true"
     auto-size-padding="22"
-    enable-col-resize="true"
-    enable-filter="true"
     enable-range-selection="true"
-    enable-sorting="true"
     enter-moves-down-="true"
     enter-moves-down-after-edit="true"
     row-height="rowHeight"
@@ -35,12 +31,13 @@
       }
     }"
     :auto-group-column-def="{ headerName: 'Options', colId: 'Options', width: 240, cellRendererParams: { suppressCount: true, }, }"
+    @grid-ready="onGridReady"
   />
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
 import { AgGridVue } from 'ag-grid-vue'
-import 'ag-grid-enterprise'
+// import 'ag-grid-enterprise'
 import AgGridBase from './AgGridBase.vue'
 
 export default {

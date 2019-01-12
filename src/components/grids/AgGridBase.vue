@@ -1,28 +1,10 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
-  <AgGridVue
-    :class="classObject"
-    :column-defs="columnDefs"
-    :default-col-def="defaultColDef"
-    :grid-ready="onGridReady"
-    :row-data="rowData"
-    animate-rows="true"
-    auto-size-padding="22"
-    enable-col-resize="true"
-    enable-filter="true"
-    enable-range-selection="true"
-    enable-sorting="true"
-    enter-moves-down-="true"
-    enter-moves-down-after-edit="true"
-    row-height="rowHeight"
-    row-selection="multiple"
-    suppress-cell-selection="false"
-    suppress-row-click-selection="false"
-  />
+  <AgGridVue />
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-import 'ag-grid-enterprise'
+import 'ag-grid-community'
 import { AgGridVue } from 'ag-grid-vue'
 
 export default {
@@ -60,6 +42,9 @@ export default {
     return {
       gridReady: false,
       defaultColDef: {
+        resizable: true,
+        filter: true,
+        sortable: true,
         classes: [],
         cellStyle: {
           'text-align': 'right',
@@ -102,8 +87,8 @@ export default {
 @import '../../sass/pow';
 @import '../../sass/phi';
 
-@import '~ag-grid-community/src/styles/ag-grid';
-@import '~ag-grid-community/src/styles/ag-theme-balham';
+@import '~ag-grid-community/src/styles/ag-grid.scss';
+@import '~ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham.scss';
 
 // Import-Dependent
 @mixin rightAlignColumnHeaders($col-ids...) {
