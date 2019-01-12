@@ -14,6 +14,7 @@ module.exports = {
     },
   },
   devServer: {
+    open: 'firefox',
     proxy: 'http://localhost:8081',
     // overlay: false,
     overlay: {
@@ -31,16 +32,16 @@ module.exports = {
       .set('vue-mdc-adapter', 'vue-mdc-adapter/dist')
       .set('material-components-vue', 'material-components-vue/dist')
       .set('~', '/code/bt-vue/node_modules/')
-    // config
-      // .plugin('clean-terminal-webpack-plugin')
-      // .use('clean-terminal-webpack-plugin')
-      // .use(require.resolve('clean-terminal-webpack-plugin'))
+    config
+      .plugin('clean-terminal-webpack-plugin')
+      .use('clean-terminal-webpack-plugin')
+      .use(require.resolve('clean-terminal-webpack-plugin'))
     // config.plugin('webpack-build-notifier').use('webpack-build-notifier', [
-    // config.plugin('webpack-build-notifier').use(require.resolve('webpack-build-notifier'), [
-    //   {
-    //     sound: false,
-    //   },
-    // ])
+    config.plugin('webpack-build-notifier').use(require.resolve('webpack-build-notifier'), [
+      {
+        sound: false,
+      },
+    ])
     /// Stats
     // config.performance.hints('warning')
     // config

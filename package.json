@@ -8,7 +8,7 @@
     "dev": "npm-run-all --parallel --silent backend-api frontend",
     "ui": "vue ui",
     "backend-api": "json-server src/agGridData.json --port 8081",
-    "frontend": "vue-cli-service serve --open",
+    "frontend": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "fetch-rowData": "node src/fetch-rowData.js",
     "severity": "node ./severity.js"
