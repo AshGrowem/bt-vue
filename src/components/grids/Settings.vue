@@ -14,12 +14,11 @@
     row-selection="multiple"
     suppress-cell-selection="true"
     suppress-row-click-selection="true"
-    row-drag-managed="true"
     group-default-expanded="-1"
     suppress-row-hover-highlight="true"
     suppress-tabbing="true"
     tree-data="true"
-    :get-data-path="function(data) {console.info(data)}"
+    :get-data-path="function(data) {return data.orgHierarchy}"
     :get-row-height="params => {
       switch (params.data.type) {
       case 'TextField':
@@ -36,78 +35,82 @@
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-import { AgGridVue } from 'ag-grid-vue'
-// import 'ag-grid-enterprise'
-import AgGridBase from './AgGridBase.vue'
+import "ag-grid-enterprise";
+import { AgGridVue } from "ag-grid-vue";
+import AgGridBase from "./AgGridBase.vue";
 
 export default {
-  name: 'Settings',
+  name: "Settings",
   extends: AgGridBase,
   data() {
     return {
       columnDefs: [
         {
-          field: 'Tracker',
+          field: "Tracker",
           cellRendererSelector: this.cellRendererSelector,
-          suppressSorting: true,
+          sortable: false
         },
         {
-          field: 'HODLings',
+          field: "HODLings",
           cellRendererSelector: this.cellRendererSelector,
-          suppressSorting: true,
+          sortable: false
         },
         {
-          field: 'Rebalancer',
+          field: "Rebalancer",
           cellRendererSelector: this.cellRendererSelector,
-          suppressSorting: true,
+          sortable: false
         },
         {
-          field: 'Settings',
+          field: "Settings",
           cellRendererSelector: this.cellRendererSelector,
-          suppressSorting: true,
+          sortable: false
         },
         {
-          field: 'Global',
+          field: "Global",
           cellRendererSelector: this.cellRendererSelector,
-          suppressSorting: true,
-        },
+          sortable: false
+        }
       ],
       rowData: [
         {
-          hierarchy: ['Performance'],
+          orgHierarchy: ["Performance"]
         },
         {
-          hierarchy: ['Performance', 'Pagination'],
-          type: 'Checkbox',
+          orgHierarchy: ["Performance", "Pagination"],
+          type: "Checkbox"
         },
         {
-          hierarchy: ['Appearance'],
+          orgHierarchy: ["Performance", "Animation"],
+          type: "Checkbox"
         },
         {
-          hierarchy: ['Appearance', 'Height'],
-          type: 'Slider',
+          orgHierarchy: ["Appearance"]
         },
         {
-          hierarchy: ['Appearance', 'Fullscreen'],
-          type: 'Switch',
+          orgHierarchy: ["Appearance", "Height"],
+          type: "Slider"
         },
         {
-          hierarchy: ['Appearance', 'Theme'],
+          orgHierarchy: ["Appearance", "Fullscreen"],
+          type: "Switch"
         },
         {
-          hierarchy: ['Grid Customization'],
+          orgHierarchy: ["Appearance", "Theme"]
         },
         {
-          hierarchy: ['Grid Customization', 'Remember Grid Changes'],
-          type: 'Checkbox',
+          orgHierarchy: ["Grid Customization"]
         },
         {
-          hierarchy: ['Grid Customization', 'Reset Grid'],
-          type: 'TextField',
+          orgHierarchy: ["Grid Customization", "Remember Grid Changes"],
+          type: "Checkbox"
         },
-      ],
-    }
-  },
-}
+        {
+          orgHierarchy: ["Grid Customization", "Reset Grid"],
+          type: "TextField"
+        }
+      ]
+    };
+  }
+};
 </script>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

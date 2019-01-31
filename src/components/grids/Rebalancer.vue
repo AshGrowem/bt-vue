@@ -20,7 +20,7 @@
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-// import 'ag-grid-enterprise'
+import 'ag-grid-enterprise'
 import { AgGridVue } from 'ag-grid-vue'
 import AgGridBase from './AgGridBase.vue'
 

@@ -9,3 +9,13 @@
 @function phi-px($exponent, $app-font-size: 16px) {
   @return phi($exponent) * $app-font-size;
 }
+
+$phi-4: 0.146rem;
+$phi-3: 0.236rem;
+$phi-2: 0.382rem;
+$phi-1: 0.618rem;
+$phi0: 1rem;
+$phi1: 1.618rem;
+$phi2: 2.618rem;
+$phi3: 4.236rem;
+$phi4: 6.854rem;

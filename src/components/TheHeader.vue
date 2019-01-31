@@ -4,7 +4,7 @@
     title="BitTracker"
     event="nav"
   >
-    <mdc-tab-bar @change="$emit('changedActiveTab', $event)">
+    <mdc-tab-bar @change="$emit('changeActiveTab', $event)">
       <mdc-tab :active="activeTabs[0]">TRACKER</mdc-tab>
       <mdc-tab :active="activeTabs[1]">HODLings</mdc-tab>
       <mdc-tab :active="activeTabs[2]">REBALANCER</mdc-tab>
@@ -71,7 +71,7 @@ export default {
 .mdc-top-app-bar {
   @include mdc-top-app-bar-fill-color($app-background-color);
   position: initial; // Fix Ag-Grid getting overlapped
-  font-size: phi-px(1);
+  font-size: $phi1;
   color: black;
 }
 
@@ -80,7 +80,7 @@ export default {
 // }
 
 .mdc-top-app-bar__title {
-  font-size: phi-px(1);
+  font-size: $phi1;
   font-weight: 400;
   line-height: 48px;
 }
@@ -91,7 +91,7 @@ export default {
 }
 
 .mdc-tab {
-  font-size: 16px;
+  font-size: $phi0;
   text-transform: initial;
   font-weight: 300;
   text-decoration-color: black;
@@ -116,7 +116,7 @@ export default {
 
 .mdc-switch-label {
   font-family: 'Exo 2';
-  font-size: phi-px(0);
+  font-size: $phi0;
   font-weight: 100;
 }
 </style>

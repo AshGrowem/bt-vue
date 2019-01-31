@@ -13,7 +13,7 @@
     />
     <TheHeader
       :active-tab="activeTab"
-      @changedActiveTab="activeTab = $event"
+      @changeActiveTab="activeTab = $event"
     />
     <Component
       :is="activeTabComponent"
@@ -149,11 +149,6 @@ export default {
       if (numOfMins < 1) {
         output = numOfSecs_Rounded + ' secs ago'
       }
-
-      if (numOfMins_Rounded === '1') {
-        output = '1 min ago'
-      }
-
       return output
     },
   },

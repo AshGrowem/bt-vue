@@ -1,3 +1,4 @@
+@import 'phi';
 $app-background-color: white;
 $app-font-family: 'Exo 2';
 $app-font-size: 16px;
@@ -19,9 +20,10 @@ $mdc-typography-font-family: $app-font-family;
 // ag-Grid built-in Variables
 // Docs https://www.ag-grid.com/javascript-grid-styling/
 // Source Code https://github.com/ag-grid/ag-grid/tree/master/packages/ag-grid-community/src/styles
-$font-size: $app-font-size;
+$font-size: $phi0;
 $font-family: $app-font-family;
 $icons-path: '~ag-grid-community/src/styles/ag-theme-balham/icons/';
+$line-height: $phi3;
 
 // Selects all MDC Components
 // *[class|='mdc'] {

@@ -1,10 +1,13 @@
 import Vue from 'vue'
+import './plugins/vuetify'
 import './registerServiceWorker'
 import VueMDCIconToggle from 'vue-mdc-adapter/icon-toggle' // mixin is broken, so we need to globally load it
 import VueMDCTextField from 'vue-mdc-adapter/textfield' // mixin is broken, so we need to globally load it
 import router from './router'
 import store from './store'
 import App from './App.vue'
+import 'roboto-fontface/css/roboto/roboto-fontface.css'
+import '@mdi/font/css/materialdesignicons.css'
 
 Vue.use(VueMDCTextField)
 Vue.use(VueMDCIconToggle)
