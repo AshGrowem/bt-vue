@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import './plugins/vuetify'
 import './registerServiceWorker'
-import VueMDCSnackbar from 'vue-mdc-adapter/dist/snackbar'
 import VueMDCIconToggle from 'vue-mdc-adapter/dist/icon-toggle' // mixin is broken, so we need to globally load it
 import VueMDCTextField from 'vue-mdc-adapter/dist/textfield' // mixin is broken, so we need to globally load it
 import router from './router'
@@ -12,7 +11,6 @@ import '@mdi/font/css/materialdesignicons.css'
 
 Vue.use(VueMDCIconToggle)
 Vue.use(VueMDCTextField)
-Vue.use(VueMDCIconToggle)
 
 Vue.config.keyCodes = {
   digit1: 49,

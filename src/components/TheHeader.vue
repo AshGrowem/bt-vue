@@ -16,14 +16,20 @@
 <script>
 import VueMDCTypography from "vue-mdc-adapter/dist/typography";
 import VueMDCSwitch from "vue-mdc-adapter/dist/switch";
-import VueMDCSnackbar from 'vue-mdc-adapter/dist/snackbar';
+import VueMDCSnackbar from "vue-mdc-adapter/dist/snackbar";
 import VueMDCTabs from "vue-mdc-adapter/dist/tabs";
 import VueMDCTopAppBar from "/code/bt-vue/vue-mdc-adapter/components/top-app-bar"; // Patches this Issue https://github.com/stasson/vue-mdc-adapter/dist/issues/529
 // import { mapState } from 'vuex'
 
 export default {
   name: "TheHeader",
-  mixins: [VueMDCTypography, VueMDCTopAppBar, VueMDCTabs, VueMDCSwitch, VueMDCSnackbar],
+  mixins: [
+    VueMDCTypography,
+    VueMDCTopAppBar,
+    VueMDCTabs,
+    VueMDCSwitch,
+    VueMDCSnackbar
+  ],
   props: {
     activeTab: {
       type: Number,
@@ -44,14 +50,18 @@ export default {
     }
   },
   mounted: function() {
-    this.snack = {
-      timeout: 10000,
-      message: 'Try using keys 1, 2, 3, & 4 to switch tabs!',
-      actionText: "Dismiss",
-      actionHandler() {
-        /* do action */
-      }
-    };
+    this.$nextTick(function() {
+      // Code that will run only after the
+      // entire view has been rendered
+      this.snack = {
+        timeout: 16000,
+        message: "Try using keys 1, 2, 3, & 4 to switch tabs!",
+        actionText: "Dismiss",
+        actionHandler() {
+          /* do action */
+        }
+      };
+    });
   }
 };
 </script>
