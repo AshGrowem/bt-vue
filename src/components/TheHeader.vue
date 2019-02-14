@@ -13,10 +13,10 @@
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-import VueMDCTypography from "vue-mdc-adapter/typography";
-import VueMDCSwitch from "vue-mdc-adapter/switch";
-import VueMDCTabs from "vue-mdc-adapter/tabs";
-import VueMDCTopAppBar from "/code/bt-vue/vue-mdc-adapter/components/top-app-bar"; // Patches this Issue https://github.com/stasson/vue-mdc-adapter/issues/529
+import VueMDCTypography from "vue-mdc-adapter/dist/typography";
+import VueMDCSwitch from "vue-mdc-adapter/dist/switch";
+import VueMDCTabs from "vue-mdc-adapter/dist/tabs";
+import VueMDCTopAppBar from "/code/bt-vue/vue-mdc-adapter/components/top-app-bar"; // Patches this Issue https://github.com/stasson/vue-mdc-adapter/dist/issues/529
 // import { mapState } from 'vuex'
 
 this;

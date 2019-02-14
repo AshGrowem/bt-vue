@@ -28,10 +28,10 @@ module.exports = {
     config.stats('verbose')
     config.devtool('eval-source-map')
     config.devServer.stats('verbose').clientLogLevel('error')
-    config.resolve.alias
-      .set('vue-mdc-adapter', 'vue-mdc-adapter/dist')
-      .set('material-components-vue', 'material-components-vue/dist')
-      .set('~', '/code/bt-vue/node_modules/')
+    // config.resolve.alias
+    //   .set('vue-mdc-adapter', 'vue-mdc-adapter/dist')
+    //   .set('material-components-vue', 'material-components-vue/dist')
+    //   .set('~', '/code/bt-vue/node_modules/')
     config
       .plugin('clean-terminal-webpack-plugin')
       .use('clean-terminal-webpack-plugin')
