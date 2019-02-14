@@ -10,6 +10,7 @@ import App from './App.vue'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 
+Vue.use(VueMDCIconToggle)
 Vue.use(VueMDCTextField)
 Vue.use(VueMDCIconToggle)
 
@@ -26,3 +27,10 @@ new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
+
+// var vm = new Vue({
+//   store,
+//   router,
+//   render: h => h(App),
+// })
+// vm.$mount('#app')

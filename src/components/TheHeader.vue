@@ -9,21 +9,21 @@
     </mdc-tab-bar>
     <mdc-switch label="Compact"/>
     <mdc-icon-toggle toggle-on="fullscreen" toggle-off="fullscreen_exit"/>
+    <mdc-snackbar v-model="snack"/>
   </mdc-top-app-bar>
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
 import VueMDCTypography from "vue-mdc-adapter/dist/typography";
 import VueMDCSwitch from "vue-mdc-adapter/dist/switch";
+import VueMDCSnackbar from 'vue-mdc-adapter/dist/snackbar';
 import VueMDCTabs from "vue-mdc-adapter/dist/tabs";
 import VueMDCTopAppBar from "/code/bt-vue/vue-mdc-adapter/components/top-app-bar"; // Patches this Issue https://github.com/stasson/vue-mdc-adapter/dist/issues/529
 // import { mapState } from 'vuex'
 
-this;
-
 export default {
   name: "TheHeader",
-  mixins: [VueMDCTypography, VueMDCTopAppBar, VueMDCTabs, VueMDCSwitch],
+  mixins: [VueMDCTypography, VueMDCTopAppBar, VueMDCTabs, VueMDCSwitch, VueMDCSnackbar],
   props: {
     activeTab: {
       type: Number,
@@ -42,6 +42,16 @@ export default {
         [false, false, false, true]
       ][this.activeTab];
     }
+  },
+  mounted: function() {
+    this.snack = {
+      timeout: 10000,
+      message: 'Try using keys 1, 2, 3, & 4 to switch tabs!',
+      actionText: "Dismiss",
+      actionHandler() {
+        /* do action */
+      }
+    };
   }
 };
 </script>
@@ -52,6 +62,7 @@ export default {
 @import "../sass/phi";
 
 @import "~@material/button/mdc-button";
+@import "~@material/snackbar/mdc-snackbar";
 @import "~@material/top-app-bar/mdc-top-app-bar";
 @import "~@material/tabs/mdc-tabs";
 // @import '~@material/icon-toggle/mdc-icon-toggle';
