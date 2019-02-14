@@ -1,45 +1,37 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
-  <mdc-top-app-bar
-    title="BitTracker"
-    event="nav"
-  >
+  <mdc-top-app-bar title="BitTracker" event="nav">
     <mdc-tab-bar @change="$emit('changeActiveTab', $event)">
       <mdc-tab :active="activeTabs[0]">TRACKER</mdc-tab>
       <mdc-tab :active="activeTabs[1]">HODLings</mdc-tab>
       <mdc-tab :active="activeTabs[2]">REBALANCER</mdc-tab>
       <mdc-tab :active="activeTabs[3]">SETTINGS</mdc-tab>
     </mdc-tab-bar>
-    <mdc-switch
-      label="Compact"
-    />
-    <mdc-icon-toggle
-      toggle-on="fullscreen"
-      toggle-off="fullscreen_exit"
-    />
+    <mdc-switch label="Compact"/>
+    <mdc-icon-toggle toggle-on="fullscreen" toggle-off="fullscreen_exit"/>
   </mdc-top-app-bar>
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-import VueMDCTypography from 'vue-mdc-adapter/typography'
-import VueMDCSwitch from 'vue-mdc-adapter/switch'
-import VueMDCTabs from 'vue-mdc-adapter/tabs'
-import VueMDCTopAppBar from '/code/bt-vue/vue-mdc-adapter/components/top-app-bar' // Patches this Issue https://github.com/stasson/vue-mdc-adapter/issues/529
+import VueMDCTypography from "vue-mdc-adapter/typography";
+import VueMDCSwitch from "vue-mdc-adapter/switch";
+import VueMDCTabs from "vue-mdc-adapter/tabs";
+import VueMDCTopAppBar from "/code/bt-vue/vue-mdc-adapter/components/top-app-bar"; // Patches this Issue https://github.com/stasson/vue-mdc-adapter/issues/529
 // import { mapState } from 'vuex'
 
-this
+this;
 
 export default {
-  name: 'TheHeader',
+  name: "TheHeader",
   mixins: [VueMDCTypography, VueMDCTopAppBar, VueMDCTabs, VueMDCSwitch],
   props: {
     activeTab: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
   data() {
-    return {}
+    return {};
   },
   computed: {
     activeTabs() {
@@ -47,23 +39,23 @@ export default {
         [true, false, false, false],
         [false, true, false, false],
         [false, false, true, false],
-        [false, false, false, true],
-      ][this.activeTab]
-    },
-  },
-}
+        [false, false, false, true]
+      ][this.activeTab];
+    }
+  }
+};
 </script>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <style lang="scss">
-@import '../sass/app';
-@import '../sass/pow';
-@import '../sass/phi';
+@import "../sass/app";
+@import "../sass/pow";
+@import "../sass/phi";
 
-@import '~@material/button/mdc-button';
-@import '~@material/top-app-bar/mdc-top-app-bar';
-@import '~@material/tabs/mdc-tabs';
+@import "~@material/button/mdc-button";
+@import "~@material/top-app-bar/mdc-top-app-bar";
+@import "~@material/tabs/mdc-tabs";
 // @import '~@material/icon-toggle/mdc-icon-toggle';
-@import '~@material/switch/mdc-switch';
+@import "~@material/switch/mdc-switch";
 
 // @include mdc-checkbox-ink-color(white);
 // @include mdc-tab-bar-indicator-ink-color(red);
@@ -78,6 +70,10 @@ export default {
 // .mdc-top-app-bar__section {
 //   flex: initial;
 // }
+
+.mdc-icon-toggle {
+  margin: 10px;
+}
 
 .mdc-top-app-bar__title {
   font-size: $phi1;
@@ -99,12 +95,14 @@ export default {
 }
 
 .mdc-tab--active {
-  text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
+  text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black,
+    0.6px 0.6px 0 black;
   transition: 0.314s ease-out;
 }
 
 .mdc-tab:hover:not(.mdc-tab--active) {
-  text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
+  text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black,
+    0.6px 0.6px 0 black;
   transition: 0.314s;
 }
 
@@ -115,7 +113,7 @@ export default {
 }
 
 .mdc-switch-label {
-  font-family: 'Exo 2';
+  font-family: "Exo 2";
   font-size: $phi0;
   font-weight: 100;
 }

@@ -43,6 +43,7 @@ export default {
     return {
       gridReady: false,
       defaultColDef: {
+        editable: true,
         resizable: true,
         filter: true,
         sortable: true,
@@ -81,7 +82,7 @@ export default {
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <style lang="scss">
 :root {
-  --ag-grid-height: 77vh;
+  --ag-grid-height: 88vh;
 }
 
 @import "../../sass/app";
