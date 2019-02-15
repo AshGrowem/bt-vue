@@ -18,7 +18,7 @@ import VueMDCTypography from "vue-mdc-adapter/dist/typography";
 import VueMDCSwitch from "vue-mdc-adapter/dist/switch";
 import VueMDCSnackbar from "vue-mdc-adapter/dist/snackbar";
 import VueMDCTabs from "vue-mdc-adapter/dist/tabs";
-import VueMDCTopAppBar from "/code/bt-vue/vue-mdc-adapter/components/top-app-bar"; // Patches this Issue https://github.com/stasson/vue-mdc-adapter/dist/issues/529
+import VueMDCTopAppBar from "../../vue-mdc-adapter/components/top-app-bar"; // Patches this Issue https://github.com/stasson/vue-mdc-adapter/dist/issues/529
 // import { mapState } from 'vuex'
 
 export default {

@@ -26,7 +26,7 @@ new Vue({
   render: h => h(App),
 }).$mount('#app')
 
-// var vm = new Vue({
+//  var vm = new Vue({
 //   store,
 //   router,
 //   render: h => h(App),
