@@ -6,8 +6,6 @@ import VueMDCTextField from 'vue-mdc-adapter/dist/textfield' // mixin is broken,
 import router from './router'
 import store from './store'
 import App from './App.vue'
-import 'roboto-fontface/css/roboto/roboto-fontface.css'
-import '@mdi/font/css/materialdesignicons.css'
 
 Vue.use(VueMDCIconToggle)
 Vue.use(VueMDCTextField)

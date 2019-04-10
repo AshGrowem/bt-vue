@@ -9,7 +9,7 @@ module.exports = {
   extends: ['airbnb-base', 'eslint:recommended', 'plugin:vue/recommended'],
   rules: {
     /// eslint-plugin-import
-    // "import/extensions": [0],
+    "import/no-unresolved": [2, { ignore: ['./*'] }],
     /// `Vue create` defaults
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',

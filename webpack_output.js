@@ -1,9 +1,8 @@
 /* eslint-disable */
 const webpack_output = {
   mode: 'development',
-  context: '/code/bt-vue',
-  devtool: '',
-  stats: 'verbose',
+  context: '/Users/ashrafhadden/code/bt-vue',
+  devtool: 'eval',
   node: {
     setImmediate: false,
     process: 'mock',
@@ -14,41 +13,39 @@ const webpack_output = {
     child_process: 'empty'
   },
   output: {
-    path: '/code/bt-vue/dist',
+    path: '/Users/ashrafhadden/code/bt-vue/dist',
     filename: '[name].js',
     publicPath: '/',
     globalObject: 'this'
   },
   resolve: {
     alias: {
-      '@': '/code/bt-vue/src',
-      vue$: 'vue/dist/vue.runtime.esm.js',
-      'vue-mdc-adapter': 'vue-mdc-adapter/dist',
-      'material-components-vue': 'material-components-vue/dist',
-      '~': '/code/bt-vue/node_modules/'
+      '@': '/Users/ashrafhadden/code/bt-vue/src',
+      vue$: 'vue/dist/vue.runtime.esm.js'
     },
     extensions: [
+      '.mjs',
       '.js',
       '.jsx',
       '.vue',
-      '.json'
+      '.json',
+      '.wasm'
     ],
     modules: [
       'node_modules',
-      '/code/bt-vue/node_modules',
-      '/code/bt-vue/node_modules/@vue/cli-service/node_modules'
+      '/Users/ashrafhadden/code/bt-vue/node_modules',
+      '/Users/ashrafhadden/code/bt-vue/node_modules/@vue/cli-service/node_modules'
     ]
   },
   resolveLoader: {
     modules: [
-      '/code/bt-vue/node_modules/@vue/cli-plugin-babel/node_modules',
+      '/Users/ashrafhadden/code/bt-vue/node_modules/@vue/cli-plugin-babel/node_modules',
       'node_modules',
-      '/code/bt-vue/node_modules',
-      '/code/bt-vue/node_modules/@vue/cli-service/node_modules'
+      '/Users/ashrafhadden/code/bt-vue/node_modules',
+      '/Users/ashrafhadden/code/bt-vue/node_modules/@vue/cli-service/node_modules'
     ]
   },
   devServer: {
-    stats: 'verbose',
     clientLogLevel: 'error'
   },
   module: {
@@ -62,8 +59,8 @@ const webpack_output = {
           {
             loader: 'cache-loader',
             options: {
-              cacheDirectory: '/code/bt-vue/node_modules/.cache/vue-loader',
-              cacheIdentifier: '6ce0746e'
+              cacheDirectory: '/Users/ashrafhadden/code/bt-vue/node_modules/.cache/vue-loader',
+              cacheIdentifier: '179a20dd'
             }
           },
           /* config.module.rule('vue').use('vue-loader') */
@@ -73,8 +70,8 @@ const webpack_output = {
               compilerOptions: {
                 preserveWhitespace: false
               },
-              cacheDirectory: '/code/bt-vue/node_modules/.cache/vue-loader',
-              cacheIdentifier: '6ce0746e'
+              cacheDirectory: '/Users/ashrafhadden/code/bt-vue/node_modules/.cache/vue-loader',
+              cacheIdentifier: '179a20dd'
             }
           }
         ]
@@ -447,24 +444,25 @@ const webpack_output = {
                 loader: 'sass-loader',
                 options: {
                   sourceMap: false,
+                  implementation: {
+                    run_: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    render: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    renderSync: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    info: 'dart-sass\t1.18.0\t(Sass Compiler)\t[Dart]\ndart2js\t2.2.0\t(Dart Compiler)\t[Dart]',
+                    types: {
+                      Boolean: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Color: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      List: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Map: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Null: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Number: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      String: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Error: function Error() { ['native code'] }
+                    }
+                  },
                   includePaths: [
                     'node_modules'
-                  ],
-                  implementation: {
-                    render: function () { /* omitted long function */ },
-                    renderSync: function () { /* omitted long function */ },
-                    info: 'node-sass\t4.9.4\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
-                    types: {
-                      Number: function SassNumber() { ['native code'] },
-                      String: function SassString() { ['native code'] },
-                      Color: function SassColor() { ['native code'] },
-                      Boolean: function SassBoolean() { ['native code'] },
-                      List: function SassList() { ['native code'] },
-                      Map: function SassMap() { ['native code'] },
-                      Null: function SassNull() { ['native code'] },
-                      Error: function SassError() { ['native code'] }
-                    }
-                  }
+                  ]
                 }
               }
             ]
@@ -501,24 +499,25 @@ const webpack_output = {
                 loader: 'sass-loader',
                 options: {
                   sourceMap: false,
+                  implementation: {
+                    run_: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    render: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    renderSync: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    info: 'dart-sass\t1.18.0\t(Sass Compiler)\t[Dart]\ndart2js\t2.2.0\t(Dart Compiler)\t[Dart]',
+                    types: {
+                      Boolean: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Color: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      List: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Map: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Null: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Number: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      String: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Error: function Error() { ['native code'] }
+                    }
+                  },
                   includePaths: [
                     'node_modules'
-                  ],
-                  implementation: {
-                    render: function () { /* omitted long function */ },
-                    renderSync: function () { /* omitted long function */ },
-                    info: 'node-sass\t4.9.4\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
-                    types: {
-                      Number: function SassNumber() { ['native code'] },
-                      String: function SassString() { ['native code'] },
-                      Color: function SassColor() { ['native code'] },
-                      Boolean: function SassBoolean() { ['native code'] },
-                      List: function SassList() { ['native code'] },
-                      Map: function SassMap() { ['native code'] },
-                      Null: function SassNull() { ['native code'] },
-                      Error: function SassError() { ['native code'] }
-                    }
-                  }
+                  ]
                 }
               }
             ]
@@ -557,24 +556,25 @@ const webpack_output = {
                 loader: 'sass-loader',
                 options: {
                   sourceMap: false,
+                  implementation: {
+                    run_: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    render: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    renderSync: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    info: 'dart-sass\t1.18.0\t(Sass Compiler)\t[Dart]\ndart2js\t2.2.0\t(Dart Compiler)\t[Dart]',
+                    types: {
+                      Boolean: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Color: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      List: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Map: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Null: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Number: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      String: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Error: function Error() { ['native code'] }
+                    }
+                  },
                   includePaths: [
                     'node_modules'
-                  ],
-                  implementation: {
-                    render: function () { /* omitted long function */ },
-                    renderSync: function () { /* omitted long function */ },
-                    info: 'node-sass\t4.9.4\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
-                    types: {
-                      Number: function SassNumber() { ['native code'] },
-                      String: function SassString() { ['native code'] },
-                      Color: function SassColor() { ['native code'] },
-                      Boolean: function SassBoolean() { ['native code'] },
-                      List: function SassList() { ['native code'] },
-                      Map: function SassMap() { ['native code'] },
-                      Null: function SassNull() { ['native code'] },
-                      Error: function SassError() { ['native code'] }
-                    }
-                  }
+                  ]
                 }
               }
             ]
@@ -610,24 +610,25 @@ const webpack_output = {
                 loader: 'sass-loader',
                 options: {
                   sourceMap: false,
+                  implementation: {
+                    run_: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    render: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    renderSync: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    info: 'dart-sass\t1.18.0\t(Sass Compiler)\t[Dart]\ndart2js\t2.2.0\t(Dart Compiler)\t[Dart]',
+                    types: {
+                      Boolean: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Color: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      List: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Map: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Null: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Number: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      String: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Error: function Error() { ['native code'] }
+                    }
+                  },
                   includePaths: [
                     'node_modules'
-                  ],
-                  implementation: {
-                    render: function () { /* omitted long function */ },
-                    renderSync: function () { /* omitted long function */ },
-                    info: 'node-sass\t4.9.4\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
-                    types: {
-                      Number: function SassNumber() { ['native code'] },
-                      String: function SassString() { ['native code'] },
-                      Color: function SassColor() { ['native code'] },
-                      Boolean: function SassBoolean() { ['native code'] },
-                      List: function SassList() { ['native code'] },
-                      Map: function SassMap() { ['native code'] },
-                      Null: function SassNull() { ['native code'] },
-                      Error: function SassError() { ['native code'] }
-                    }
-                  }
+                  ]
                 }
               }
             ]
@@ -672,25 +673,26 @@ const webpack_output = {
                 loader: 'sass-loader',
                 options: {
                   sourceMap: false,
-                  indentedSyntax: true,
+                  implementation: {
+                    run_: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    render: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    renderSync: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    info: 'dart-sass\t1.18.0\t(Sass Compiler)\t[Dart]\ndart2js\t2.2.0\t(Dart Compiler)\t[Dart]',
+                    types: {
+                      Boolean: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Color: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      List: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Map: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Null: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Number: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      String: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Error: function Error() { ['native code'] }
+                    }
+                  },
                   includePaths: [
                     'node_modules'
                   ],
-                  implementation: {
-                    render: function () { /* omitted long function */ },
-                    renderSync: function () { /* omitted long function */ },
-                    info: 'node-sass\t4.9.4\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
-                    types: {
-                      Number: function SassNumber() { ['native code'] },
-                      String: function SassString() { ['native code'] },
-                      Color: function SassColor() { ['native code'] },
-                      Boolean: function SassBoolean() { ['native code'] },
-                      List: function SassList() { ['native code'] },
-                      Map: function SassMap() { ['native code'] },
-                      Null: function SassNull() { ['native code'] },
-                      Error: function SassError() { ['native code'] }
-                    }
-                  }
+                  indentedSyntax: true
                 }
               }
             ]
@@ -727,25 +729,26 @@ const webpack_output = {
                 loader: 'sass-loader',
                 options: {
                   sourceMap: false,
-                  indentedSyntax: true,
+                  implementation: {
+                    run_: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    render: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    renderSync: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    info: 'dart-sass\t1.18.0\t(Sass Compiler)\t[Dart]\ndart2js\t2.2.0\t(Dart Compiler)\t[Dart]',
+                    types: {
+                      Boolean: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Color: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      List: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Map: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Null: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Number: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      String: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Error: function Error() { ['native code'] }
+                    }
+                  },
                   includePaths: [
                     'node_modules'
                   ],
-                  implementation: {
-                    render: function () { /* omitted long function */ },
-                    renderSync: function () { /* omitted long function */ },
-                    info: 'node-sass\t4.9.4\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
-                    types: {
-                      Number: function SassNumber() { ['native code'] },
-                      String: function SassString() { ['native code'] },
-                      Color: function SassColor() { ['native code'] },
-                      Boolean: function SassBoolean() { ['native code'] },
-                      List: function SassList() { ['native code'] },
-                      Map: function SassMap() { ['native code'] },
-                      Null: function SassNull() { ['native code'] },
-                      Error: function SassError() { ['native code'] }
-                    }
-                  }
+                  indentedSyntax: true
                 }
               }
             ]
@@ -784,25 +787,26 @@ const webpack_output = {
                 loader: 'sass-loader',
                 options: {
                   sourceMap: false,
-                  indentedSyntax: true,
+                  implementation: {
+                    run_: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    render: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    renderSync: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    info: 'dart-sass\t1.18.0\t(Sass Compiler)\t[Dart]\ndart2js\t2.2.0\t(Dart Compiler)\t[Dart]',
+                    types: {
+                      Boolean: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Color: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      List: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Map: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Null: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Number: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      String: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Error: function Error() { ['native code'] }
+                    }
+                  },
                   includePaths: [
                     'node_modules'
                   ],
-                  implementation: {
-                    render: function () { /* omitted long function */ },
-                    renderSync: function () { /* omitted long function */ },
-                    info: 'node-sass\t4.9.4\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
-                    types: {
-                      Number: function SassNumber() { ['native code'] },
-                      String: function SassString() { ['native code'] },
-                      Color: function SassColor() { ['native code'] },
-                      Boolean: function SassBoolean() { ['native code'] },
-                      List: function SassList() { ['native code'] },
-                      Map: function SassMap() { ['native code'] },
-                      Null: function SassNull() { ['native code'] },
-                      Error: function SassError() { ['native code'] }
-                    }
-                  }
+                  indentedSyntax: true
                 }
               }
             ]
@@ -838,25 +842,26 @@ const webpack_output = {
                 loader: 'sass-loader',
                 options: {
                   sourceMap: false,
-                  indentedSyntax: true,
+                  implementation: {
+                    run_: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    render: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    renderSync: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                    info: 'dart-sass\t1.18.0\t(Sass Compiler)\t[Dart]\ndart2js\t2.2.0\t(Dart Compiler)\t[Dart]',
+                    types: {
+                      Boolean: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Color: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      List: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Map: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Null: function(){return b(c,Array.prototype.slice.apply(arguments))},
+                      Number: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      String: function(){return b(c,this,Array.prototype.slice.apply(arguments))},
+                      Error: function Error() { ['native code'] }
+                    }
+                  },
                   includePaths: [
                     'node_modules'
                   ],
-                  implementation: {
-                    render: function () { /* omitted long function */ },
-                    renderSync: function () { /* omitted long function */ },
-                    info: 'node-sass\t4.9.4\t(Wrapper)\t[JavaScript]\nlibsass  \t3.5.4\t(Sass Compiler)\t[C/C++]',
-                    types: {
-                      Number: function SassNumber() { ['native code'] },
-                      String: function SassString() { ['native code'] },
-                      Color: function SassColor() { ['native code'] },
-                      Boolean: function SassBoolean() { ['native code'] },
-                      List: function SassList() { ['native code'] },
-                      Map: function SassMap() { ['native code'] },
-                      Null: function SassNull() { ['native code'] },
-                      Error: function SassError() { ['native code'] }
-                    }
-                  }
+                  indentedSyntax: true
                 }
               }
             ]
@@ -1175,7 +1180,7 @@ const webpack_output = {
       },
       /* config.module.rule('js') */
       {
-        test: /\.jsx?$/,
+        test: /\.m?jsx?$/,
         exclude: [
           function () { /* omitted long function */ }
         ],
@@ -1184,8 +1189,8 @@ const webpack_output = {
           {
             loader: 'cache-loader',
             options: {
-              cacheDirectory: '/code/bt-vue/node_modules/.cache/babel-loader',
-              cacheIdentifier: '2700b34d'
+              cacheDirectory: '/Users/ashrafhadden/code/bt-vue/node_modules/.cache/babel-loader',
+              cacheIdentifier: '2e772202'
             }
           },
           /* config.module.rule('js').use('babel-loader') */
@@ -1223,15 +1228,13 @@ const webpack_output = {
     ),
     /* config.plugin('hmr') */
     new HotModuleReplacementPlugin(),
-    /* config.plugin('no-emit-on-errors') */
-    new NoEmitOnErrorsPlugin(),
     /* config.plugin('progress') */
     new ProgressPlugin(),
     /* config.plugin('html') */
     new HtmlWebpackPlugin(
       {
         templateParameters: function () { /* omitted long function */ },
-        template: '/code/bt-vue/public/index.html'
+        template: '/Users/ashrafhadden/code/bt-vue/public/index.html'
       }
     ),
     /* config.plugin('pwa') */
@@ -1262,18 +1265,34 @@ const webpack_output = {
     new CopyWebpackPlugin(
       [
         {
-          from: '/code/bt-vue/public',
-          to: '/code/bt-vue/dist',
+          from: '/Users/ashrafhadden/code/bt-vue/public',
+          to: '/Users/ashrafhadden/code/bt-vue/dist',
           toType: 'dir',
           ignore: [
-            'index.html',
             '.DS_Store'
           ]
         }
       ]
     ),
+    /* config.plugin('VuetifyLoaderPlugin') */
+    new VuetifyLoaderPlugin(),
     /* config.plugin('clean-terminal-webpack-plugin') */
-    new (require('/code/bt-vue/node_modules/clean-terminal-webpack-plugin/index.js'))()
+    new (require('/Users/ashrafhadden/code/bt-vue/node_modules/clean-terminal-webpack-plugin/index.js'))(),
+    /* config.plugin('extra-watch-webpack-plugin') */
+    new (require('/Users/ashrafhadden/code/bt-vue/node_modules/extra-watch-webpack-plugin/lib/index.js'))(
+      {
+        files: [
+          '/User/ashrafhadden/code/bt-vue/package-lock.json',
+          '/User/ashrafhadden/code/bt-vue/vue.config.json'
+        ]
+      }
+    ),
+    /* config.plugin('webpack-build-notifier') */
+    new (require('/Users/ashrafhadden/code/bt-vue/node_modules/webpack-build-notifier/index.js'))(
+      {
+        sound: false
+      }
+    )
   ],
   entry: {
     app: [

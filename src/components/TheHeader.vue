@@ -1,35 +1,60 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
-  <mdc-top-app-bar title="BitTracker" event="nav">
+  <mdc-top-app-bar
+    title="BitTracker"
+    event="nav"
+  >
     <mdc-tab-bar @change="$emit('changeActiveTab', $event)">
-      <mdc-tab :active="activeTabs[0]">TRACKER</mdc-tab>
-      <mdc-tab :active="activeTabs[1]">HODLings</mdc-tab>
-      <mdc-tab :active="activeTabs[2]">REBALANCER</mdc-tab>
-      <mdc-tab :active="activeTabs[3]">SETTINGS</mdc-tab>
+      <mdc-tab :active="activeTabs[0]">
+        TRACKER
+      </mdc-tab>
+      <mdc-tab :active="activeTabs[1]">
+        HODLings
+      </mdc-tab>
+      <mdc-tab :active="activeTabs[2]">
+        REBALANCER
+      </mdc-tab>
+      <mdc-tab :active="activeTabs[3]">
+        SETTINGS
+      </mdc-tab>
     </mdc-tab-bar>
-    <mdc-switch label="Compact"/>
-    <mdc-icon-toggle toggle-on="fullscreen" toggle-off="fullscreen_exit"/>
-    <mdc-snackbar v-model="snack"/>
+    <v-switch
+      label="Compact"
+    />
+    <icon-toggle
+      iconone="fullscreen"
+      icontwo="fullscreen_exit"
+    />
+    <v-snackbar
+      v-model="snackbar"
+      :timeout="timeout"
+    >
+      Try using keys 1, 2, 3 & 4 to switch tabs!
+      <v-btn
+        color="pink"
+        text
+        @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
+    <mdc-snackbar v-model="snack" />
   </mdc-top-app-bar>
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
 import VueMDCTypography from "vue-mdc-adapter/dist/typography";
-import VueMDCSwitch from "vue-mdc-adapter/dist/switch";
-import VueMDCSnackbar from "vue-mdc-adapter/dist/snackbar";
 import VueMDCTabs from "vue-mdc-adapter/dist/tabs";
+import IconToggle from "./IconToggle";
 import VueMDCTopAppBar from "../../vue-mdc-adapter/components/top-app-bar"; // Patches this Issue https://github.com/stasson/vue-mdc-adapter/dist/issues/529
 // import { mapState } from 'vuex'
 
 export default {
   name: "TheHeader",
-  mixins: [
-    VueMDCTypography,
-    VueMDCTopAppBar,
-    VueMDCTabs,
-    VueMDCSwitch,
-    VueMDCSnackbar
-  ],
+  components: {
+    IconToggle
+  },
+  mixins: [VueMDCTypography, VueMDCTopAppBar, VueMDCTabs],
   props: {
     activeTab: {
       type: Number,
@@ -37,7 +62,16 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      checkbox: true,
+      radioGroup: 1,
+      switch1: true,
+      snackbar: false,
+      y: "top",
+      x: null,
+      mode: "",
+      timeout: 16000,
+    };
   },
   computed: {
     activeTabs() {
@@ -53,14 +87,15 @@ export default {
     this.$nextTick(function() {
       // Code that will run only after the
       // entire view has been rendered
-      this.snack = {
-        timeout: 16000,
-        message: "Try using keys 1, 2, 3, & 4 to switch tabs!",
-        actionText: "Dismiss",
-        actionHandler() {
-          /* do action */
-        }
-      };
+      this.snackbar = true
+      // this.snack = {
+      //   timeout: 16000,
+      //   message: "Try using keys 1, 2, 3, & 4 to switch tabs!",
+      //   actionText: "Dismiss",
+      //   actionHandler() {
+      //     /* do action */
+      //   }
+      // };
     });
   }
 };
@@ -76,7 +111,6 @@ export default {
 @import "~@material/top-app-bar/mdc-top-app-bar";
 @import "~@material/tabs/mdc-tabs";
 // @import '~@material/icon-toggle/mdc-icon-toggle';
-@import "~@material/switch/mdc-switch";
 
 // @include mdc-checkbox-ink-color(white);
 // @include mdc-tab-bar-indicator-ink-color(red);
@@ -131,12 +165,6 @@ export default {
   background: inherit;
   border: none;
   outline: none;
-}
-
-.mdc-switch-label {
-  font-family: "Exo 2";
-  font-size: $phi0;
-  font-weight: 100;
 }
 </style>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
