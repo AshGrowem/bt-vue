@@ -27,7 +27,7 @@
     />
     <v-snackbar
       v-model="snackbar"
-      :timeout="timeout"
+      :timeout="0"
     >
       Try using keys 1, 2, 3 & 4 to switch tabs!
       <v-btn
@@ -38,7 +38,6 @@
         Close
       </v-btn>
     </v-snackbar>
-    <mdc-snackbar v-model="snack" />
   </mdc-top-app-bar>
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -63,14 +62,7 @@ export default {
   },
   data() {
     return {
-      checkbox: true,
-      radioGroup: 1,
-      switch1: true,
-      snackbar: false,
-      y: "top",
-      x: null,
-      mode: "",
-      timeout: 16000,
+      snackbar: false
     };
   },
   computed: {
@@ -83,19 +75,13 @@ export default {
       ][this.activeTab];
     }
   },
-  mounted: function() {
-    this.$nextTick(function() {
-      // Code that will run only after the
-      // entire view has been rendered
-      this.snackbar = true
-      // this.snack = {
-      //   timeout: 16000,
-      //   message: "Try using keys 1, 2, 3, & 4 to switch tabs!",
-      //   actionText: "Dismiss",
-      //   actionHandler() {
-      //     /* do action */
-      //   }
-      // };
+  mounted: () => {
+    this.$nextTick(() => {
+      // Run after the last mount
+      this.snackbar = true;
+      setTimeout(() => {
+        this.snackbar = true;
+      }, 2000);
     });
   }
 };
