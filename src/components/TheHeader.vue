@@ -4,20 +4,11 @@
     title="BitTracker"
     event="nav"
   >
-    <mdc-tab-bar @change="$emit('changeActiveTab', $event)">
-      <mdc-tab :active="activeTabs[0]">
-        TRACKER
-      </mdc-tab>
-      <mdc-tab :active="activeTabs[1]">
-        HODLings
-      </mdc-tab>
-      <mdc-tab :active="activeTabs[2]">
-        REBALANCER
-      </mdc-tab>
-      <mdc-tab :active="activeTabs[3]">
-        SETTINGS
-      </mdc-tab>
-    </mdc-tab-bar>
+    <v-tabs>
+      <v-tab>Item One</v-tab>
+      <v-tab>Item Two</v-tab>
+      <v-tab>Item Three</v-tab>
+    </v-tabs>
     <v-switch
       label="Compact"
     />
@@ -38,32 +29,34 @@
         Close
       </v-btn>
     </v-snackbar>
+    <test />
   </mdc-top-app-bar>
 </template>
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-import VueMDCTypography from "vue-mdc-adapter/dist/typography";
-import VueMDCTabs from "vue-mdc-adapter/dist/tabs";
-import IconToggle from "./IconToggle";
-import VueMDCTopAppBar from "../../vue-mdc-adapter/components/top-app-bar"; // Patches this Issue https://github.com/stasson/vue-mdc-adapter/dist/issues/529
+// import VueMDCTypography from 'vue-mdc-adapter/dist/typography'
+// import VueMDCTabs from 'vue-mdc-adapter/dist/tabs'
+import IconToggle from './IconToggle'
+import Test from './Test'
+// import VueMDCTopAppBar from '../../vue-mdc-adapter/components/top-app-bar' // Patches this Issue https://github.com/stasson/vue-mdc-adapter/dist/issues/529
 // import { mapState } from 'vuex'
 
 export default {
-  name: "TheHeader",
+  name: 'TheHeader',
   components: {
-    IconToggle
+    IconToggle,
+    Test
   },
-  mixins: [VueMDCTypography, VueMDCTopAppBar, VueMDCTabs],
   props: {
     activeTab: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
-      snackbar: false
-    };
+      snackbar: false,
+    }
   },
   computed: {
     activeTabs() {
@@ -71,31 +64,29 @@ export default {
         [true, false, false, false],
         [false, true, false, false],
         [false, false, true, false],
-        [false, false, false, true]
-      ][this.activeTab];
-    }
+        [false, false, false, true],
+      ][this.activeTab]
+    },
   },
-  mounted: () => {
+  mounted() {
     this.$nextTick(() => {
-      // Run after the last mount
-      this.snackbar = true;
       setTimeout(() => {
-        this.snackbar = true;
-      }, 2000);
-    });
-  }
-};
+        this.snackbar = true
+      }, 2000)
+    })
+  },
+}
 </script>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <style lang="scss">
-@import "../sass/app";
-@import "../sass/pow";
-@import "../sass/phi";
+@import '../sass/app';
+@import '../sass/pow';
+@import '../sass/phi';
 
-@import "~@material/button/mdc-button";
-@import "~@material/snackbar/mdc-snackbar";
-@import "~@material/top-app-bar/mdc-top-app-bar";
-@import "~@material/tabs/mdc-tabs";
+@import '~@material/button/mdc-button';
+@import '~@material/snackbar/mdc-snackbar';
+@import '~@material/top-app-bar/mdc-top-app-bar';
+@import '~@material/tabs/mdc-tabs';
 // @import '~@material/icon-toggle/mdc-icon-toggle';
 
 // @include mdc-checkbox-ink-color(white);
@@ -136,14 +127,12 @@ export default {
 }
 
 .mdc-tab--active {
-  text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black,
-    0.6px 0.6px 0 black;
+  text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
   transition: 0.314s ease-out;
 }
 
 .mdc-tab:hover:not(.mdc-tab--active) {
-  text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black,
-    0.6px 0.6px 0 black;
+  text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
   transition: 0.314s;
 }
 
