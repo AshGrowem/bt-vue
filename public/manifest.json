@@ -1,6 +1,6 @@
 {
-  "name": "BitTracker",
-  "short_name": "BitTracker",
+  "name": "bt-vue",
+  "short_name": "bt-vue",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",

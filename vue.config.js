@@ -1,7 +1,8 @@
-// var exec = require('shelljs').exec
-// var exec = require('child_process').exec
+/// DOCS: https://cli.vuejs.org/config
+const { exec } = require('child_process')
 
 module.exports = {
+  // https://cli.vuejs.org/guide/css.html#passing-options-to-pre-processor-loaders
   lintOnSave: false,
   css: {
     loaderOptions: {
@@ -22,19 +23,22 @@ module.exports = {
   },
   /// Chain
   chainWebpack: config => {
-    config.stats('verbose') // https://webpack.js.org/configuration/stats#stats
+    // config.performance.hints('warning')
+    config.plugins.delete('progress')
     config.devtool('eval') // https://webpack.js.org/configuration/devtool/#devtool
     config.when(process.env.NODE_ENV === 'production', config => config.devtool(''))
-    config.plugin('clean-terminal-webpack-plugin').use(require.resolve('clean-terminal-webpack-plugin'))
+    config.plugin('simple-progress-webpack-plugin').use(require.resolve('simple-progress-webpack-plugin'), [
+      {
+        format: 'minimal',
+      },
+    ])
     config.plugin('webpack-build-notifier').use(require.resolve('webpack-build-notifier'), [
       {
         sound: false,
-        // onClick: function() {
-        //   exec('open http://localhost:8080/', { shell: '/usr/local/bin/bash' })
-        // },
+        onClick: function() {
+          exec('open http://localhost:8080')
+        },
       },
     ])
-    /// Stats
-    // config.performance.hints('warning')
   },
 }
