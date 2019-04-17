@@ -4,10 +4,18 @@
     title="bt-vue"
     event="nav"
   >
-    <v-tabs>
-      <v-tab>Item One</v-tab>
-      <v-tab>Item Two</v-tab>
-      <v-tab>Item Three</v-tab>
+    <v-tabs
+      slider-color="black"
+    >
+      <v-tab class="text-none">
+        Tracker
+      </v-tab>
+      <v-tab class="text-none">
+        HODLings
+      </v-tab>
+      <v-tab class="text-none">
+        Settings
+      </v-tab>
     </v-tabs>
     <v-switch
       label="Compact"
@@ -45,7 +53,7 @@ export default {
   name: 'TheHeader',
   components: {
     IconToggle,
-    Test
+    Test,
   },
   props: {
     activeTab: {
@@ -87,24 +95,12 @@ export default {
 @import '~@material/snackbar/mdc-snackbar';
 @import '~@material/top-app-bar/mdc-top-app-bar';
 @import '~@material/tabs/mdc-tabs';
-// @import '~@material/icon-toggle/mdc-icon-toggle';
-
-// @include mdc-checkbox-ink-color(white);
-// @include mdc-tab-bar-indicator-ink-color(red);
 
 .mdc-top-app-bar {
   @include mdc-top-app-bar-fill-color($app-background-color);
   position: initial; // Fix Ag-Grid getting overlapped
   font-size: $phi1;
   color: black;
-}
-
-// .mdc-top-app-bar__section {
-//   flex: initial;
-// }
-
-.mdc-icon-toggle {
-  margin: 10px;
 }
 
 .mdc-top-app-bar__title {
@@ -118,28 +114,21 @@ export default {
   // box-shadow: 0px 10px 31px 0px rgba(0, 0, 0, 0.2);
 }
 
-.mdc-tab {
+.v-tab {
   font-size: $phi0;
-  text-transform: initial;
-  font-weight: 300;
-  text-decoration-color: black;
+  font-family: $app-font-family;
   color: black;
+  font-weight: 300;
 }
 
-.mdc-tab--active {
+.v-tab--active {
   text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
   transition: 0.314s ease-out;
 }
 
-.mdc-tab:hover:not(.mdc-tab--active) {
+.v-tab:hover:not(.v-tab--active) {
   text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
   transition: 0.314s;
-}
-
-.mdc-icon-button {
-  background: inherit;
-  border: none;
-  outline: none;
 }
 </style>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

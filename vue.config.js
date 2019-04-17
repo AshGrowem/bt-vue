@@ -1,5 +1,6 @@
 /// DOCS: https://cli.vuejs.org/config
 const { exec } = require('child_process')
+const Fiber = require('fibers')
 
 module.exports = {
   // https://cli.vuejs.org/guide/css.html#passing-options-to-pre-processor-loaders
@@ -9,12 +10,12 @@ module.exports = {
       sass: {
         includePaths: ['node_modules'],
         implementation: require('sass'), // Dart
+        fiber: Fiber, // speeds up Dart
         // implementation: require('node-sass'), // Faster, but may error
       },
     },
   },
   devServer: {
-    // open: 'firefox',
     proxy: 'http://localhost:8081',
     overlay: {
       warnings: true,
@@ -23,7 +24,6 @@ module.exports = {
   },
   /// Chain
   chainWebpack: config => {
-    // config.performance.hints('warning')
     config.plugins.delete('progress')
     config.devtool('eval') // https://webpack.js.org/configuration/devtool/#devtool
     config.when(process.env.NODE_ENV === 'production', config => config.devtool(''))
@@ -40,5 +40,6 @@ module.exports = {
         },
       },
     ])
+    config.plugin('clean-terminal-webpack-plugin').use(require.resolve('clean-terminal-webpack-plugin'))
   },
 }

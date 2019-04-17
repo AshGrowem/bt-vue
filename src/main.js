@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import './plugins/vuetify'
+import vuetify from './plugins/vuetify'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
@@ -14,6 +14,7 @@ Vue.config.keyCodes = {
 Vue.config.productionTip = false
 
 new Vue({
+  vuetify,
   store,
   router,
   render: h => h(App),
