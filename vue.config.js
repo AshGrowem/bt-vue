@@ -8,7 +8,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        includePaths: ['node_modules'],
+        // includePaths: ['node_modules'],
         implementation: require('sass'), // Dart
         fiber: Fiber, // speeds up Dart
         // implementation: require('node-sass'), // Faster, but may error
@@ -16,7 +16,13 @@ module.exports = {
     },
   },
   devServer: {
-    proxy: 'http://localhost:8081',
+    proxy: {
+      // https://github.com/chimurai/http-proxy-middleware#context-matching
+      '/api/*': {
+        target: 'http://localhost:8081',
+        ws: false,
+      },
+    },
     overlay: {
       warnings: true,
       errors: true,
@@ -25,7 +31,7 @@ module.exports = {
   /// Chain
   chainWebpack: config => {
     config.plugins.delete('progress')
-    config.devtool('eval') // https://webpack.js.org/configuration/devtool/#devtool
+    // config.devtool('eval') // https://webpack.js.org/configuration/devtool/#devtool
     config.when(process.env.NODE_ENV === 'production', config => config.devtool(''))
     config.plugin('simple-progress-webpack-plugin').use(require.resolve('simple-progress-webpack-plugin'), [
       {

@@ -1,22 +1,35 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
-  <mdc-top-app-bar
-    title="bt-vue"
-    event="nav"
-  >
-    <v-tabs
+  <v-toolbar>
+    <v-tabs-items
+      v-model="model"
       slider-color="black"
     >
-      <v-tab class="text-none">
-        Tracker
-      </v-tab>
-      <v-tab class="text-none">
+      <v-tab-item
+        id="tracker-tab"
+        class="text-none"
+      >
+        TRACKER
+      </v-tab-item>
+      <v-tab-item
+        id="hodlings-tab"
+        class="text-none"
+      >
         HODLings
-      </v-tab>
-      <v-tab class="text-none">
-        Settings
-      </v-tab>
-    </v-tabs>
+      </v-tab-item>
+      <v-tab-item
+        id="rebalancer-tab"
+        class="text-none"
+      >
+        REBALANCER
+      </v-tab-item>
+      <v-tab-item
+        id="settings-tab"
+        class="text-none"
+      >
+        SETTINGS
+      </v-tab-item>
+    </v-tabs-items>
     <v-switch
       label="Compact"
     />
@@ -24,36 +37,18 @@
       iconone="fullscreen"
       icontwo="fullscreen_exit"
     />
-    <v-snackbar
-      v-model="snackbar"
-      :timeout="0"
-    >
-      Try using keys 1, 2, 3 & 4 to switch tabs!
-      <v-btn
-        color="pink"
-        text
-        @click="snackbar = false"
-      >
-        Close
-      </v-btn>
-    </v-snackbar>
-    <test />
-  </mdc-top-app-bar>
+  </v-toolbar>
 </template>
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-// import VueMDCTypography from 'vue-mdc-adapter/dist/typography'
-// import VueMDCTabs from 'vue-mdc-adapter/dist/tabs'
 import IconToggle from './IconToggle'
-import Test from './Test'
-// import VueMDCTopAppBar from '../../vue-mdc-adapter/components/top-app-bar' // Patches this Issue https://github.com/stasson/vue-mdc-adapter/dist/issues/529
+// import Test from './Test'
 // import { mapState } from 'vuex'
 
 export default {
   name: 'TheHeader',
   components: {
     IconToggle,
-    Test,
   },
   props: {
     activeTab: {
@@ -63,6 +58,7 @@ export default {
   },
   data() {
     return {
+      model: 'tab-2',
       snackbar: false,
     }
   },
@@ -91,33 +87,10 @@ export default {
 @import '../sass/pow';
 @import '../sass/phi';
 
-@import '~@material/button/mdc-button';
-@import '~@material/snackbar/mdc-snackbar';
-@import '~@material/top-app-bar/mdc-top-app-bar';
-@import '~@material/tabs/mdc-tabs';
-
-.mdc-top-app-bar {
-  @include mdc-top-app-bar-fill-color($app-background-color);
-  position: initial; // Fix Ag-Grid getting overlapped
-  font-size: $phi1;
-  color: black;
-}
-
-.mdc-top-app-bar__title {
-  font-size: $phi1;
-  font-weight: 400;
-  line-height: 48px;
-}
-
-.mdc-tab-bar {
-  margin-left: 0vw;
-  // box-shadow: 0px 10px 31px 0px rgba(0, 0, 0, 0.2);
-}
-
 .v-tab {
   font-size: $phi0;
   font-family: $app-font-family;
-  color: black;
+  color: black !important;
   font-weight: 300;
 }
 

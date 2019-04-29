@@ -19,18 +19,18 @@
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import AgGridBase from "./AgGridBase.vue";
+import 'ag-grid-enterprise'
+import { AgGridVue } from 'ag-grid-vue'
+import AgGridBase from './AgGridBase.vue'
 
 export default {
-  name: "Tracker",
+  name: 'Tracker',
   extends: AgGridBase,
   props: {
     rowData: {
       type: Array,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -53,8 +53,19 @@ export default {
         { field: 'Growth @1% Market Share', headerTooltip: 'Potential Price Growth', width: 240, valueFormatter: 'value + "x"'                                                                                             },
         { field: 'CoinMarketCap URL'      , headerTooltip: 'CoinMarketCap.com Link', width: 300, cellStyle: this.rightAlignedCellStyle                                                                                  },
       ]
-    };
-  }
-};
+    }
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridReady = true
+      this.gridApi = params.api
+      this.columnApi = params.columnApi
+    },
+    rowDataChanged(params) {
+      const fieldArray = Object.keys(this.rowData[0])
+      this.columnApi.autoSizeColumns(fieldArray)
+    },
+  },
+}
 </script>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

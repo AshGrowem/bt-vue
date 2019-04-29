@@ -6,38 +6,39 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
 import 'ag-grid-enterprise'
-import { AgGridVue } from "ag-grid-vue";
+import { AgGridVue } from 'ag-grid-vue'
+import { log } from 'util'
 
 export default {
-  name: "Tracker",
+  name: 'Tracker',
   components: {
-    AgGridVue
+    AgGridVue,
   },
   props: {
     numericFont: {
       type: String,
-      default: "Titillium Web"
+      default: 'Titillium Web',
     },
     numericFontWeight: {
       type: Number,
-      default: 100
+      default: 100,
     },
     lastUpdated: {
       type: Function,
-      required: true
+      required: true,
     },
     rightAlignedCellStyle: {
       type: Object,
-      required: true
+      required: true,
     },
     valueFormatter: {
       type: Object,
-      required: true
+      required: true,
     },
     comparator: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -54,30 +55,19 @@ export default {
           'font-family': this.numericFont,
           'font-weight': this.numericFontWeight,
         },
-      }
-      // prettier-ignore
+      },
     }
   },
   computed: {
     classObject() {
       return {
-        "ag-grid": true,
-        "ag-theme-balham": true,
-        "grid-ready": this.gridReady
-      };
-    }
+        'ag-grid': true,
+        'ag-theme-balham': true,
+        'grid-ready': this.gridReady,
+      }
+    },
   },
-  methods: {
-    onGridReady(params) {
-      this.gridReady = true;
-      this.gridApi = params.api;
-      this.columnApi = params.columnApi;
-
-      const fieldArray = Object.keys(this.rowData[0]);
-      this.columnApi.autoSizeColumns(fieldArray);
-    }
-  }
-};
+}
 </script>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <style lang="scss">
@@ -85,26 +75,24 @@ export default {
   --ag-grid-height: 88vh;
 }
 
-@import "../../sass/app";
-@import "../../sass/pow";
-@import "../../sass/phi"; // file:///code/bt-vue/src/sass/_phi.scss
+@import '../../sass/app';
+@import '../../sass/pow';
+@import '../../sass/phi'; // file:///code/bt-vue/src/sass/_phi.scss
 
-@import "~ag-grid-community/src/styles/ag-grid.scss";
-@import "~ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham.scss";
+@import '~ag-grid-community/src/styles/ag-grid.scss';
+@import '~ag-grid-community/src/styles/ag-theme-balham/sass/ag-theme-balham.scss';
 
 // Import-Dependent
 @mixin rightAlignColumnHeaders($col-ids...) {
   $col-id-arr: $col-ids;
 
   @each $col-id in $col-id-arr {
-    .ag-header-cell[col-id="#{$col-id}"] > .ag-cell-label-container {
+    .ag-header-cell[col-id='#{$col-id}'] > .ag-cell-label-container {
       display: flex;
       flex-direction: row;
     }
 
-    .ag-header-cell[col-id="#{$col-id}"]
-      > .ag-cell-label-container
-      > .ag-header-cell-label {
+    .ag-header-cell[col-id='#{$col-id}'] > .ag-cell-label-container > .ag-header-cell-label {
       display: flex;
       flex-direction: row-reverse;
     }
@@ -112,22 +100,22 @@ export default {
 }
 
 @include rightAlignColumnHeaders(
-  "#",
-  "Market Cap",
-  "Market Share",
-  "Price",
-  "Volume 24h",
-  "1h",
-  "24h",
-  "7d",
-  "Circulating",
-  "Supply",
-  "Max Supply",
-  "Growth @1% Market Share"
+  '#',
+  'Market Cap',
+  'Market Share',
+  'Price',
+  'Volume 24h',
+  '1h',
+  '24h',
+  '7d',
+  'Circulating',
+  'Supply',
+  'Max Supply',
+  'Growth @1% Market Share'
 );
 
 // Remove focus outline
-div[tabindex="-1"]:focus {
+div[tabindex='-1']:focus {
   outline: 0;
 }
 
@@ -153,7 +141,7 @@ div[tabindex="-1"]:focus {
   font-size: $phi0;
 }
 
-.ag-header-cell[col-id="Global"] {
+.ag-header-cell[col-id='Global'] {
   color: $mdc-theme-primary;
 }
 
@@ -174,7 +162,10 @@ div[tabindex="-1"]:focus {
 .ag-root-wrapper {
   border-radius: 1rem;
   border: solid rgb(230, 230, 230) 1px;
-  box-shadow: 0px 16px 64px 0px rgba(0, 0, 0, 0.32);
+  // Material Elevation 24 https://github.com/material-components/material-components-web/blob/master/packages/mdc-elevation/_variables.scss
+  // box-shadow: 0px 16px 64px 0px rgba(0, 0, 0, 0.32);
+  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0px 9px 46px 8px rgba(0, 0, 0, 0.12) !important;
   font-weight: 100;
   padding: 12px;
 }

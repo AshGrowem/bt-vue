@@ -28,6 +28,19 @@ Optimizations
       :value-formatter="valueFormatter"
       :comparator="comparator"
     />
+    <v-snackbar
+      v-model="snackbar"
+      :timeout="0"
+    >
+      Try using keys 1, 2, 3 & 4 to switch tabs!
+      <v-btn
+        color="pink"
+        text
+        @click="snackbar = false"
+      >
+        Close
+      </v-btn>
+    </v-snackbar>
   </main>
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -51,6 +64,7 @@ export default {
   },
   data() {
     return {
+      snackbar: false,
       rowData: null,
       activeTab: 0,
       numericFont: 'Titillium Web',
@@ -134,8 +148,15 @@ export default {
       }
     },
   },
-  created() {
-    fetch('/rowData')
+  mounted() {
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.snackbar = true
+      }, 2000)
+    })
+  },
+  beforeCreate() {
+    fetch('api/rowData')
       .then(response => response.json())
       .then(json => (this.rowData = json))
   },
