@@ -6,7 +6,9 @@ Optimizations
 • JS -> TS
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
-  <main class="App">
+  <main
+    class="App"
+  >
     <GlobalEvents
       :filter="event => event.target.tagName !== 'INPUT' && 'TEXTAREA'"
       @keydown.digit1="activeTab = 0"
@@ -16,7 +18,10 @@ Optimizations
     />
     <TheHeader
       :active-tab="activeTab"
-      @changeActiveTab="activeTab = $event"
+      @change-tab-0="activeTab = 0"
+      @change-tab-1="activeTab = 1"
+      @change-tab-2="activeTab = 2"
+      @change-tab-3="activeTab = 3"
     />
     <Component
       :is="activeTabComponent"
@@ -101,7 +106,7 @@ export default {
           return '<mwc-formfield><mwc-checkbox></mwc-checkbox></mwc-formfield>'
         },
         mdc_checkbox: params => {
-          return '<div class="mdc-form-field"> <div class="mdc-checkbox"> <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1"/> <div class="mdc-checkbox__background"> <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24"> <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/> </svg> <div class="mdc-checkbox__mixedmark"></div> </div> </div> <label for="checkbox-1"></label> </div>'
+          return ''
         },
         nativeCheckbox: params => {
           return '<input type="checkbox"/>'
@@ -161,6 +166,14 @@ export default {
       .then(json => (this.rowData = json))
   },
   methods: {
+    test() {
+      alert('test')
+      console.log('test')
+    },
+    changeTab(event) {
+      console.log(event)
+      this.activeTab = event.payload[0]
+    },
     lastUpdated: timeThen => {
       // Measuring in seconds
       let timeNow = Date.now() / 1000

@@ -13,16 +13,20 @@ Vue.config.keyCodes = {
 }
 Vue.config.productionTip = false
 
-new Vue({
+/// Prod
+// new Vue({
+//   vuetify,
+//   store,
+//   router,
+//   render: h => h(App),
+// }).$mount('#app')
+
+/// Dev
+// To be able to inspect vm
+var vm = new Vue({
   vuetify,
   store,
   router,
   render: h => h(App),
-}).$mount('#app')
-
-//  var vm = new Vue({
-//   store,
-//   router,
-//   render: h => h(App),
-// })
-// vm.$mount('#app')
+})
+vm.$mount('#app')

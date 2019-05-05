@@ -5,18 +5,6 @@ $app-font-size: 16px;
 @import 'easings';
 $app-ease: 0.314s $easeInOutSine;
 
-// MDC Variables
-// https://material.io/develop/web/docs/theming/
-// https://material.io/develop/web/components/theme/
-// https://material.io/develop/web/components/typography/
-$mdc-theme-primary: #6200ea;
-$mdc-theme-secondary: #6200ea;
-$mdc-theme-on-primary: black;
-$mdc-theme-on-secondary: red;
-$mdc-typography-font-family: $app-font-family;
-
-@import "~@material/typography/mdc-typography";
-
 // ag-Grid built-in Variables
 // Docs https://www.ag-grid.com/javascript-grid-styling/
 // Source Code https://github.com/ag-grid/ag-grid/tree/master/packages/ag-grid-community/src/styles
@@ -24,8 +12,3 @@ $font-size: $phi0;
 $font-family: $app-font-family;
 $icons-path: '~ag-grid-community/src/styles/ag-theme-balham/icons/';
 $line-height: $phi3;
-
-// Selects all MDC Components
-// *[class|='mdc'] {
-//   font-family: 'Exo 2', sans-serif !important;
-// }

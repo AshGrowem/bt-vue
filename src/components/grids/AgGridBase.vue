@@ -7,7 +7,6 @@
 <script>
 import 'ag-grid-enterprise'
 import { AgGridVue } from 'ag-grid-vue'
-import { log } from 'util'
 
 export default {
   name: 'Tracker',
@@ -142,7 +141,7 @@ div[tabindex='-1']:focus {
 }
 
 .ag-header-cell[col-id='Global'] {
-  color: $mdc-theme-primary;
+  // color: $mdc-theme-primary;
 }
 
 .ag-root {

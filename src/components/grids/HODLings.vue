@@ -20,18 +20,18 @@
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import AgGridBase from "./AgGridBase.vue";
+import 'ag-grid-enterprise'
+import { AgGridVue } from 'ag-grid-vue'
+import AgGridBase from './AgGridBase.vue'
 
 export default {
-  name: "HODLings",
+  name: 'HODLings',
   extends: AgGridBase,
   props: {
     rowData: {
       type: Array,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -77,8 +77,19 @@ export default {
           ],
         },
       ]
-    };
-  }
-};
+    }
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridReady = true
+      this.gridApi = params.api
+      this.columnApi = params.columnApi
+    },
+    rowDataChanged(params) {
+      const fieldArray = Object.keys(this.rowData[0])
+      this.columnApi.autoSizeColumns(fieldArray)
+    },
+  },
+}
 </script>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

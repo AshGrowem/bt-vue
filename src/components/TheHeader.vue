@@ -1,35 +1,24 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
   <v-toolbar>
-    <v-tabs-items
-      v-model="model"
+    <v-app-bar-nav-icon />
+    <v-tabs
+      v-model="model" 
       slider-color="black"
     >
-      <v-tab-item
-        id="tracker-tab"
-        class="text-none"
-      >
+      <v-tab @click="$emit('change-tab-0')">
         TRACKER
-      </v-tab-item>
-      <v-tab-item
-        id="hodlings-tab"
-        class="text-none"
-      >
+      </v-tab>
+      <v-tab @click="$emit('change-tab-1')">
         HODLings
-      </v-tab-item>
-      <v-tab-item
-        id="rebalancer-tab"
-        class="text-none"
-      >
+      </v-tab>
+      <v-tab @click="$emit('change-tab-2')">
         REBALANCER
-      </v-tab-item>
-      <v-tab-item
-        id="settings-tab"
-        class="text-none"
-      >
+      </v-tab>
+      <v-tab @click="$emit('change-tab-3')">
         SETTINGS
-      </v-tab-item>
-    </v-tabs-items>
+      </v-tab>
+    </v-tabs>
     <v-switch
       label="Compact"
     />
@@ -48,6 +37,7 @@ import IconToggle from './IconToggle'
 export default {
   name: 'TheHeader',
   components: {
+    // Test,
     IconToggle,
   },
   props: {
@@ -61,16 +51,6 @@ export default {
       model: 'tab-2',
       snackbar: false,
     }
-  },
-  computed: {
-    activeTabs() {
-      return [
-        [true, false, false, false],
-        [false, true, false, false],
-        [false, false, true, false],
-        [false, false, false, true],
-      ][this.activeTab]
-    },
   },
   mounted() {
     this.$nextTick(() => {
@@ -102,6 +82,10 @@ export default {
 .v-tab:hover:not(.v-tab--active) {
   text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
   transition: 0.314s;
+}
+
+.v-toolbar {
+  box-shadow: none !important;
 }
 </style>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

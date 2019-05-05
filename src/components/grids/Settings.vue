@@ -35,82 +35,93 @@
 </template>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <script>
-import "ag-grid-enterprise";
-import { AgGridVue } from "ag-grid-vue";
-import AgGridBase from "./AgGridBase.vue";
+import 'ag-grid-enterprise'
+import { AgGridVue } from 'ag-grid-vue'
+import AgGridBase from './AgGridBase.vue'
 
 export default {
-  name: "Settings",
+  name: 'Settings',
   extends: AgGridBase,
   data() {
     return {
       columnDefs: [
         {
-          field: "Tracker",
+          field: 'Tracker',
           cellRendererSelector: this.cellRendererSelector,
-          sortable: false
+          sortable: false,
         },
         {
-          field: "HODLings",
+          field: 'HODLings',
           cellRendererSelector: this.cellRendererSelector,
-          sortable: false
+          sortable: false,
         },
         {
-          field: "Rebalancer",
+          field: 'Rebalancer',
           cellRendererSelector: this.cellRendererSelector,
-          sortable: false
+          sortable: false,
         },
         {
-          field: "Settings",
+          field: 'Settings',
           cellRendererSelector: this.cellRendererSelector,
-          sortable: false
+          sortable: false,
         },
         {
-          field: "Global",
+          field: 'Global',
           cellRendererSelector: this.cellRendererSelector,
-          sortable: false
-        }
+          sortable: false,
+        },
       ],
       rowData: [
         {
-          orgHierarchy: ["Performance"]
+          orgHierarchy: ['Performance'],
         },
         {
-          orgHierarchy: ["Performance", "Pagination"],
-          type: "Checkbox"
+          orgHierarchy: ['Performance', 'Pagination'],
+          type: 'Checkbox',
         },
         {
-          orgHierarchy: ["Performance", "Animation"],
-          type: "Checkbox"
+          orgHierarchy: ['Performance', 'Animation'],
+          type: 'Checkbox',
         },
         {
-          orgHierarchy: ["Appearance"]
+          orgHierarchy: ['Appearance'],
         },
         {
-          orgHierarchy: ["Appearance", "Height"],
-          type: "Slider"
+          orgHierarchy: ['Appearance', 'Height'],
+          type: 'Slider',
         },
         {
-          orgHierarchy: ["Appearance", "Fullscreen"],
-          type: "Switch"
+          orgHierarchy: ['Appearance', 'Fullscreen'],
+          type: 'Switch',
         },
         {
-          orgHierarchy: ["Appearance", "Theme"]
+          orgHierarchy: ['Appearance', 'Theme'],
         },
         {
-          orgHierarchy: ["Grid Customization"]
+          orgHierarchy: ['Grid Customization'],
         },
         {
-          orgHierarchy: ["Grid Customization", "Remember Grid Changes"],
-          type: "Checkbox"
+          orgHierarchy: ['Grid Customization', 'Remember Grid Changes'],
+          type: 'Checkbox',
         },
         {
-          orgHierarchy: ["Grid Customization", "Reset Grid"],
-          type: "TextField"
-        }
-      ]
-    };
-  }
-};
+          orgHierarchy: ['Grid Customization', 'Reset Grid'],
+          type: 'TextField',
+        },
+      ],
+    }
+  },
+  methods: {
+    onGridReady(params) {
+      this.gridReady = true
+      this.gridApi = params.api
+      this.columnApi = params.columnApi
+    },
+    rowDataChanged(params) {
+      const fieldArray = Object.keys(this.rowData[0])
+      this.columnApi.autoSizeColumns(fieldArray)
+    },
+  },
+}
 </script>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
