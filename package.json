@@ -5,6 +5,7 @@
   "scripts": {
     "backend": "json-server src/agGridData.json -p 8081 -r routes.json",
     "build": "vue-cli-service build --watch",
+    "deploy": "vue-cli-service build",
     "dev": "npm-run-all --parallel --silent backend frontend",
     "fetch-rowData": "node src/fetch-rowData.js",
     "frontend": "vue-cli-service serve",

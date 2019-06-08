@@ -18,11 +18,10 @@ Optimizations
     />
     <TheHeader
       :active-tab="activeTab"
-      :active-tab-class-map="activeTabClassMap"
-      @change-tab-0="activeTab = 0"
-      @change-tab-1="activeTab = 1"
-      @change-tab-2="activeTab = 2"
-      @change-tab-3="activeTab = 3"
+      @clicked-tab-1="activeTab = 1"
+      @clicked-tab-2="activeTab = 2"
+      @clicked-tab-3="activeTab = 3"
+      @clicked-tab-4="activeTab = 4"
     />
     <Component
       :is="activeTabComponent"
@@ -73,13 +72,7 @@ export default {
     return {
       snackbar: false,
       rowData: null,
-      activeTab: 0,
-      activeTabClassMap: {
-        0: null,
-        1: null,
-        2: null,
-        3: null,
-      },
+      activeTab: 1,
       numericFont: 'Titillium Web',
       numericFontWeight: 100,
       rightAlignedCellStyle: {
@@ -93,7 +86,7 @@ export default {
   },
   computed: {
     activeTabComponent() {
-      return ['Tracker', 'HODLings', 'Rebalancer', 'Settings'][this.activeTab]
+      return ['tab-0-placeholder', 'Tracker', 'HODLings', 'Rebalancer', 'Settings'][this.activeTab]
     },
     language() {
       return navigator.language || navigator.userLanguage
@@ -198,41 +191,21 @@ export default {
       return output
     },
     onDigit1() {
-      this.activeTab = 0
-      this.activeTabClassMap = {
-        0: true,
-        1: false,
-        2: false,
-        3: false,
-      }
+      this.activeTab = 1
+      this.$children[1].$refs['tab-1'].$el.click()
     },
     onDigit2() {
-      this.activeTab = 1
-      this.activeTabClassMap = {
-        0: false,
-        1: true,
-        2: false,
-        3: false,
-      }
+      this.activeTab = 2
+      this.$children[1].$refs['tab-2'].$el.click()
     },
     onDigit3() {
-      this.activeTab = 2
-      this.activeTabClassMap = {
-        0: false,
-        1: false,
-        2: true,
-        3: false,
-      }
+      this.activeTab = 3
+      this.$children[1].$refs['tab-3'].$el.click()
     },
     onDigit4() {
-      this.activeTab = 3
-      this.activeTabClassMap = {
-        0: false,
-        1: false,
-        2: false,
-        3: true,
-      }
-    },
+      this.activeTab = 4
+      this.$children[1].$refs['tab-4'].$el.click()
+    }
   },
 }
 </script>
@@ -241,7 +214,7 @@ export default {
 // @import url('https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/');
 // @import url('https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css');
 // @import url('https://fonts.googleapis.com/css?family=Exo+2:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900|Material+Icons');
-// @import '~vuetify/dist/vuetify.min.css';
 // @import '~vuetify/src/styles/main.sass';
+@import '~vuetify/dist/vuetify.min.css';
 </style>
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

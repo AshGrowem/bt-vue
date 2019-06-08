@@ -140,9 +140,9 @@ div[tabindex='-1']:focus {
   font-size: $phi0;
 }
 
-.ag-header-cell[col-id='Global'] {
-  // color: $mdc-theme-primary;
-}
+// .ag-header-cell[col-id='Global'] {
+//   // color: $mdc-theme-primary;
+// }
 
 .ag-root {
   border-radius: 1rem;

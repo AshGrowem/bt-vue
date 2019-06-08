@@ -7,26 +7,26 @@
       centered
     >
       <v-tab
-        :class="{ 'v-tab--active': activeTabClassMap[0] }"
-        @click="$emit('change-tab-0')"
+        ref="tab-1"
+        @click="$emit('clicked-tab-1')"
       >
         TRACKER
       </v-tab>
       <v-tab
-        :class="{ 'v-tab--active': activeTabClassMap[1] }"
-        @click="$emit('change-tab-1')"
+        ref="tab-2"
+        @click="$emit('clicked-tab-2')"
       >
         HODLings
       </v-tab>
       <v-tab
-        :class="{ 'v-tab--active': activeTabClassMap[2] }"
-        @click="$emit('change-tab-2')"
+        ref="tab-3"
+        @click="$emit('clicked-tab-3')"
       >
         REBALANCER
       </v-tab>
       <v-tab
-        :class="{ 'v-tab--active': activeTabClassMap[3] }"
-        @click="$emit('change-tab-3')"
+        ref="tab-4"
+        @click="$emit('clicked-tab-4')"
       >
         SETTINGS
       </v-tab>
@@ -41,39 +41,16 @@ import IconToggle from './IconToggle'
 
 export default {
   name: 'TheHeader',
-  components: {
-    // Test,
-    IconToggle,
-  },
   props: {
     activeTab: {
       type: Number,
-      default: 0,
-    },
-    activeTabClassMap: {
-      type: Object,
-      default: function() {
-        return {
-          0: null,
-          1: null,
-          2: null,
-          3: null,
-        }
-      },
+      default: 1,
     },
   },
   data() {
     return {
-      model: 'tab-2',
-      snackbar: false,
+      model: 'tab-3',
     }
-  },
-  mounted() {
-    this.$nextTick(() => {
-      setTimeout(() => {
-        this.snackbar = true
-      }, 2000)
-    })
   },
 }
 </script>
@@ -91,13 +68,11 @@ export default {
 }
 
 .v-tab--active {
-  text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
-  transition: 0.314s ease-out;
+  text-shadow: -0.3px -0.3px 0 black, 0.3px -0.3px 0 black, -0.3px 0.3px 0 black, 0.3px 0.3px 0 black;
 }
 
 .v-tab:hover:not(.v-tab--active) {
-  text-shadow: -0.6px -0.6px 0 black, 0.6px -0.6px 0 black, -0.6px 0.6px 0 black, 0.6px 0.6px 0 black;
-  transition: 0.314s;
+  text-shadow: -0.3px -0.3px 0 black, 0.3px -0.3px 0 black, -0.3px 0.3px 0 black, 0.3px 0.3px 0 black;
 }
 
 .v-toolbar {
