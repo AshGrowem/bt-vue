@@ -11,13 +11,14 @@ Optimizations
   >
     <GlobalEvents
       :filter="event => event.target.tagName !== 'INPUT' && 'TEXTAREA'"
-      @keydown.digit1="activeTab = 0"
-      @keydown.digit2="activeTab = 1"
-      @keydown.digit3="activeTab = 2"
-      @keydown.digit4="activeTab = 3"
+      @keydown.digit1="onDigit1"
+      @keydown.digit2="onDigit2"
+      @keydown.digit3="onDigit3"
+      @keydown.digit4="onDigit4"
     />
     <TheHeader
       :active-tab="activeTab"
+      :active-tab-class-map="activeTabClassMap"
       @change-tab-0="activeTab = 0"
       @change-tab-1="activeTab = 1"
       @change-tab-2="activeTab = 2"
@@ -56,6 +57,7 @@ import Tracker from './components/grids/Tracker.vue'
 import HODLings from './components/grids/HODLings.vue'
 import Rebalancer from './components/grids/Rebalancer.vue'
 import Settings from './components/grids/Settings.vue'
+import rowDataLocal from './rowData'
 
 export default {
   name: 'App',
@@ -72,6 +74,12 @@ export default {
       snackbar: false,
       rowData: null,
       activeTab: 0,
+      activeTabClassMap: {
+        0: null,
+        1: null,
+        2: null,
+        3: null,
+      },
       numericFont: 'Titillium Web',
       numericFontWeight: 100,
       rightAlignedCellStyle: {
@@ -161,9 +169,10 @@ export default {
     })
   },
   beforeCreate() {
-    fetch('api/rowData')
-      .then(response => response.json())
-      .then(json => (this.rowData = json))
+    const getRowDataLocal = async () => {
+      this.rowData = await rowDataLocal
+    }
+    getRowDataLocal()
   },
   methods: {
     test() {
@@ -187,6 +196,42 @@ export default {
         output = numOfSecs_Rounded + ' secs ago'
       }
       return output
+    },
+    onDigit1() {
+      this.activeTab = 0
+      this.activeTabClassMap = {
+        0: true,
+        1: false,
+        2: false,
+        3: false,
+      }
+    },
+    onDigit2() {
+      this.activeTab = 1
+      this.activeTabClassMap = {
+        0: false,
+        1: true,
+        2: false,
+        3: false,
+      }
+    },
+    onDigit3() {
+      this.activeTab = 2
+      this.activeTabClassMap = {
+        0: false,
+        1: false,
+        2: true,
+        3: false,
+      }
+    },
+    onDigit4() {
+      this.activeTab = 3
+      this.activeTabClassMap = {
+        0: false,
+        1: false,
+        2: false,
+        3: true,
+      }
     },
   },
 }
