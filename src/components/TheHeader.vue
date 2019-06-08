@@ -1,10 +1,10 @@
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 <template>
   <v-toolbar>
-    <v-app-bar-nav-icon />
     <v-tabs
       v-model="model" 
       slider-color="black"
+      centered
     >
       <v-tab @click="$emit('change-tab-0')">
         TRACKER
@@ -19,13 +19,6 @@
         SETTINGS
       </v-tab>
     </v-tabs>
-    <v-switch
-      label="Compact"
-    />
-    <icon-toggle
-      iconone="fullscreen"
-      icontwo="fullscreen_exit"
-    />
   </v-toolbar>
 </template>
 ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
